@@ -1,3 +1,5 @@
+Title: The `aptitude why` command is awesome
+
 The `aptitude why` command is awesome. At a glance, it tells you the whole dependency tree that led a package being installed, starting with the user's action:
 
     chromakode@ardent:~$ aptitude why liboxideqtcore0
