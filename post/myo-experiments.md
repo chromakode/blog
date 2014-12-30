@@ -1,6 +1,6 @@
 # Fun with the Myo gesture controller
 
-The [Myo](http://myo.com) is a wireless armband that uses [electromyography](http://en.wikipedia.org/wiki/Electromyography) to detect and recognize hand gestures. When paired with a computer or smartphone, gestures can be used to trigger various application-specific functions.
+[Myo](http://myo.com) is a wireless armband that uses [electromyography](http://en.wikipedia.org/wiki/Electromyography) to detect and recognize hand gestures. When paired with a computer or smartphone, gestures can be used to trigger various application-specific functions.
 
 <video autoplay loop poster="/post/myo-experiments/myo-play.jpg">
   <source id="webmsource" src="/post/myo-experiments/myo-play.webm" type="video/webm">
