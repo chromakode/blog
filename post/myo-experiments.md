@@ -2,6 +2,11 @@
 
 The [Myo](http://myo.com) is a wireless armband that uses [electromyography](http://en.wikipedia.org/wiki/Electromyography) to detect and recognize hand gestures. When paired with a computer or smartphone, gestures can be used to trigger various application-specific functions.
 
+<video autoplay loop>
+  <source id="webmsource" src="/post/myo-experiments/myo-play.webm" type="video/webm">
+  <source id="mp4source" src="/post/myo-experiments/myo-play.mp4" type="video/mp4">
+</video>
+
 When their marketing video made the rounds in 2013, I remember one specific demo made my jaw drop: touch-free video control. The video shows a man watching a cooking instructional video while cutting some raw meat. Being able to [pause and rewind the video simply by raising his hand](https://www.youtube.com/watch?v=oWu9TFJjHaM#t=34) was a solution to an interaction problem I've had countless times, such as listening to podcasts while doing chores, or watching videos while eating a sandwich.
 
 I ordered a Myo back in March 2013 and deferred shipment until their consumer design was ready. It was a nice surprise to return home from holiday travels to find a Myo waiting for me. :)
@@ -12,9 +17,9 @@ I was happy to see some [web browser integration](https://market.myo.com/app/548
 
 While the gesture recognition doesn't always work perfectly (probably a matter of training both myself and the armband better), when everything works properly, the results are pretty sublime:
 
-<video autoplay loop width="600" height="338">
-  <source id="webmsource" src="/post/myo-experiments/myo-play.webm" type="video/webm">
-  <source id="mp4source" src="/post/myo-experiments/myo-play.mp4" type="video/mp4">
+<video autoplay loop>
+  <source id="webmsource" src="/post/myo-experiments/myo-seek.webm" type="video/webm">
+  <source id="mp4source" src="/post/myo-experiments/myo-seek.mp4" type="video/mp4">
 </video>
 
 I'll be posting my scripts and future tinkerings in a [myo-scripts](https://github.com/chromakode/myo-scripts) repo on GitHub.
