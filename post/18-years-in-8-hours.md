@@ -52,7 +52,7 @@ Putting it all together, I assembled everything into a pipeline and ran it overn
     for n in $(ls); do
       pushd $n
       lrzip -vv $n.img
-      tar cv * | pv | gpg --passphrase="$PASSPHRASE" --no-use-agent --symmetric --cipher-algo AES256 | gsutil cp - gs://$BUCKET/$n.tar.gpg
+      tar cv $n.img.lrz $n-log fdisk smart | pv | gpg --passphrase="$PASSPHRASE" --no-use-agent --symmetric --cipher-algo AES256 | gsutil cp - gs://$BUCKET/$n.tar.gpg
       popd
     done
 
