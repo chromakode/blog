@@ -62,6 +62,8 @@ At my friend davean's suggestion, since `lrzip` is a less common program, I also
 
 I also encrypted the files on my local HDD: while I used the out-of-box NTFS filesystem on the My Passport drive for the disk images in transit, once I had a copy of the files in Nearline, I reformatted the drive to [ext4](https://en.wikipedia.org/wiki/Ext4) with [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
+Update: an important final step (thanks to [khc on HN](https://news.ycombinator.com/item?id=11502530) for mentioning this): it's critical to test a full restore flow of your backups before leaving them to rest. In my case, I tested downloading from Nearline, decrypting, un-lrzipping, and reading. Similarly, for my local HDD copy, I tested mounting the encrypted filesystem and reading the images.
+
 ---
 
 Finally, a word of advice when handling disk drives (and other objects you would not like to fall): objects that are already on the floor cannot fall further. Treat any object that is elevated from the floor like it will fall. You can increase the odds of this happening massively by haphazardly arranging your backup drives on swivel chairs and assorted hardware. ;)
