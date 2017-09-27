@@ -26,7 +26,7 @@ An alternative could be news that exposes opportunities we can participate in. B
 
 Unlike fast news, the amount of slow news to consume is finite. If little in the big picture has changed, there is not much new to speak of. This presents a challenge: without a constantly-changing perspective, why will an audience return to it? A successful slow news source must justify itself by the practical value of the information it provides, not by how interesting it is.
 
-Changes in the world, even from acute events, are usually the result of a long ongoing effort. It’s not possible to orient this effort at the pace of fast news. An ongoing value of slow news to provide focus and context in the face of change. When our perspective is zoomed out, and not changing so quickly, more attention can be paid to the actionable aspects of ongoing, slower transformations.
+Changes in the world, even from acute events, are usually the result of a long ongoing effort. It’s not possible to orient this effort at the pace of fast news. An ongoing value of slow news is to provide focus and context in the face of change. When our perspective is zoomed out, and not changing so quickly, more attention can be paid to the actionable aspects of ongoing, slower transformations.
 
 How we think about ourselves and the world fundamentally changes how we function, and our information sources play an outset role in this. I am seeking to reduce the priority of fast news in my life while staying informed during these changing times. What sources are you following to accomplish this? Are there any that you would consider to be slow news?
 
