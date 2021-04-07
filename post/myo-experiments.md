@@ -2,7 +2,7 @@
 
 [Myo](http://myo.com) is a wireless armband that uses [electromyography](http://en.wikipedia.org/wiki/Electromyography) to detect and recognize hand gestures. When paired with a computer or smartphone, gestures can be used to trigger various application-specific functions.
 
-<video autoplay loop poster="/post/myo-experiments/myo-play.jpg">
+<video muted autoplay loop poster="/post/myo-experiments/myo-play.jpg">
   <source id="webmsource" src="/post/myo-experiments/myo-play.webm" type="video/webm">
   <source id="mp4source" src="/post/myo-experiments/myo-play.mp4" type="video/mp4">
 </video>
@@ -17,7 +17,7 @@ I was happy to see some [web browser integration](https://market.myo.com/app/548
 
 While the gesture recognition doesn't always work perfectly (probably a matter of training both myself and the armband better), when everything works properly, the results are pretty sublime:
 
-<video autoplay loop poster="/post/myo-experiments/myo-seek.jpg">
+<video muted autoplay loop poster="/post/myo-experiments/myo-seek.jpg">
   <source id="webmsource" src="/post/myo-experiments/myo-seek.webm" type="video/webm">
   <source id="mp4source" src="/post/myo-experiments/myo-seek.mp4" type="video/mp4">
 </video>
