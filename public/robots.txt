@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://chromakode.com/sitemap-index.xml
