@@ -13,6 +13,8 @@ const { reversed } = Astro.props
     display: flex;
     width: 100%;
     height: 1.5vh;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 
     &.reversed {
       transform: scaleX(-1);
@@ -36,6 +38,10 @@ const { reversed } = Astro.props
       bar.style.backgroundColor =
         'hsl(' + ((base + i * mul) % 360) + ', 70%, 60%)'
       el.appendChild(bar)
+    }
+
+    if (el instanceof HTMLElement) {
+      el.style.opacity = '1'
     }
   }
 </script>

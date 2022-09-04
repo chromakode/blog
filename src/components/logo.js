@@ -246,6 +246,7 @@ function cubeSpinner() {
   })
 
   frame()
+  logoEl.style.opacity = '1'
 }
 
 function sideLogo() {
@@ -255,7 +256,7 @@ function sideLogo() {
 
   // force a fade-in
   el.style.transition = 'none'
-  el.style.opacity = 0
+  el.style.opacity = '0'
   el.offsetHeight
   el.style.transition = null
   el.style.opacity = null
@@ -303,11 +304,12 @@ function sizePage() {
   document.documentElement.style.setProperty('--vh', `${vh}px`)
 }
 
-if (document.getElementById('spinner')) {
-  setTimeout(cubeSpinner, 0)
-}
-
-setTimeout(sideLogo, 0)
+window.addEventListener('load', () => {
+  if (document.getElementById('spinner')) {
+    cubeSpinner()
+  }
+  sideLogo()
+})
 
 sizePage()
 window.addEventListener('resize', sizePage)
