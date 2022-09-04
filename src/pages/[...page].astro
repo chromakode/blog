@@ -41,15 +41,11 @@ const isFirstPage = page.currentPage === 1
     </Main>
     <nav>
       <a
-        href={new URL(page.url.prev || '/', Astro.url)}
+        href={page.url.prev || '/'}
         class:list={{ disabled: isFirstPage }}
         aria-disabled={isFirstPage}>&lsaquo; Previous Page</a
       >
-      {
-        page.url.next != null && (
-          <a href={new URL(page.url.next, Astro.url)}>Next Page &rsaquo;</a>
-        )
-      }
+      {page.url.next != null && <a href={page.url.next}>Next Page &rsaquo;</a>}
     </nav>
     <Footer />
     <style>
