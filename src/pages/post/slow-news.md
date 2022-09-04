@@ -1,3 +1,9 @@
+---
+layout: ../../layouts/PostLayout.astro
+title: Slow news
+pubDate: September 27, 2017
+---
+
 # Slow news
 
 For the past 3 years, I've been addicted to the news. My usual days are punctuated by checking the NPR Newscast (via the wonderful [NPR One](http://one.npr.org)) every couple hours, reading articles linked through Twitter, Facebook, and Reddit, and listening to topic-focused news podcasts throughout the day as I exercise or do chores.

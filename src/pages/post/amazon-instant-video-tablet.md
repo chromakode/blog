@@ -1,3 +1,9 @@
+---
+layout: ../../layouts/PostLayout.astro
+title: Running Amazon Instant Video on Android tablets
+pubDate: December 11, 2014
+---
+
 # Running Amazon Instant Video on Android tablets
 
 In September, Amazon finally [released an official Instant Video app for Android](http://www.androidpolice.com/2014/09/09/breaking-amazon-updates-its-app-to-5-0-with-access-to-entire-digital-catalog-instant-video-app/). Unfortunately, this app is not downloadable on tablets via their app store -- only phones. Yet, Amazon Instant video has been supported for years on Amazon's own "Fire" Android-based tablets. It really bums me out that Amazon Instant Video continues to snub their competitors' products, but if you're like me and have a lot of purchases locked up in their store, there is a way:

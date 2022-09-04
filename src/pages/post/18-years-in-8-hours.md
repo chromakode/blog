@@ -1,3 +1,9 @@
+---
+layout: ../../layouts/PostLayout.astro
+title: Backing up 18 years in 8 hours
+pubDate: January 4, 2016
+---
+
 # Backing up 18 years in 8 hours
 
 ![Computer guts](/post/18-years-in-8-hours/workspace.jpg)
@@ -6,9 +12,9 @@ This winter, while home visiting family, I took the opportunity to gather up all
 
 When I was a teenager, whenever a hard disk needed replacement, I'd pull the old drive and shove it in my closet. There they sat, some for over a decade, until I turned them back on last month. Amazingly, across ~350GB of data, only about 500KB proved unrecoverable. Quite fortunate, considering that some of these drives were 15 years old, and one was removed with failing health checks.
 
-In the process of recovering this data, I resolved to preserve it for the rest of my lifetime. Why go to all this trouble? Well, in my explorations of these old drives, I discovered far more meaningful memories than I expected. Old music and 3D renders, chat logs, emails, screenshots, and *tons* of old photos. The disks from the early 2000s were a reminder of the days when computer use gravitated around "My Documents" folders. Then I learned about Linux and always-on internet access arrived. I took a peek at my first homedir and found all of the little Python scripts I wrote as I learned to work on the command line.
+In the process of recovering this data, I resolved to preserve it for the rest of my lifetime. Why go to all this trouble? Well, in my explorations of these old drives, I discovered far more meaningful memories than I expected. Old music and 3D renders, chat logs, emails, screenshots, and _tons_ of old photos. The disks from the early 2000s were a reminder of the days when computer use gravitated around "My Documents" folders. Then I learned about Linux and always-on internet access arrived. I took a peek at my first homedir and found all of the little Python scripts I wrote as I learned to work on the command line.
 
-By today's standards, the breadth and fidelity of these scraps is rather... quaint. A kid growing up today should have a fine pixel-perfect view of most of their digital trail as they grow up. That was another reason this project proved interesting: it was not just a record of how computers changed; it revealed how the ways I used computers and what they *meant* to me changed over time.
+By today's standards, the breadth and fidelity of these scraps is rather... quaint. A kid growing up today should have a fine pixel-perfect view of most of their digital trail as they grow up. That was another reason this project proved interesting: it was not just a record of how computers changed; it revealed how the ways I used computers and what they _meant_ to me changed over time.
 
 ---
 
@@ -26,16 +32,22 @@ To recover data from the drives, I used [`ddrescue`](https://www.gnu.org/softwar
 
 Copy data from `/dev/sdc` to `disk.img` (outputting a log of errors to `./disk-log`):
 
-    $ ddrescue -d -n /dev/sdc ./disk.img ./disk-log
+```sh
+$ ddrescue -d -n /dev/sdc ./disk.img ./disk-log
+```
 
 One of my favorite features of `ddrescue` is that you can re-run it at any point to resume where it left off or try to recover more data. In the initial run, I passed `-n` to skip the slow exhaustive scraping process, in hopes of getting as much data off the drives as possible in case they stopped working after running for while. Thankfully, no issues cropped up. If there were read errors during the initial sweep, I re-ran the process with a retry count:
 
-    $ ddrescue -d -r 3 /dev/sdc ./disk.img ./disk-log
+```sh
+$ ddrescue -d -r 3 /dev/sdc ./disk.img ./disk-log
+```
 
 In addition, I saved the partition table and [S.M.A.R.T.](https://en.wikipedia.org/wiki/S.M.A.R.T.) data separately:
 
-    $ smartctl --all /dev/sdc > ./smart
-    $ fdisk -l /dev/sdc > ./fdisk
+```sh
+$ smartctl --all /dev/sdc > ./smart
+$ fdisk -l /dev/sdc > ./fdisk
+```
 
 With the holidays over and all disks archived, I flew back home with the external HDD in my carry-on bag.
 
@@ -49,12 +61,14 @@ After compressing the images, I encrypted them with AES256 using [`gpg`](https:/
 
 Putting it all together, I assembled everything into a pipeline and ran it overnight:
 
-    for n in $(ls); do
-      pushd $n
-      lrzip -vv $n.img
-      tar cv $n.img.lrz $n-log fdisk smart | pv | gpg --passphrase="$PASSPHRASE" --no-use-agent --symmetric --cipher-algo AES256 | gsutil cp - gs://$BUCKET/$n.tar.gpg
-      popd
-    done
+```sh
+for n in $(ls); do
+  pushd $n
+  lrzip -vv $n.img
+  tar cv $n.img.lrz $n-log fdisk smart | pv | gpg --passphrase="$PASSPHRASE" --no-use-agent --symmetric --cipher-algo AES256 | gsutil cp - gs://$BUCKET/$n.tar.gpg
+  popd
+done
+```
 
 Waking up to ~250GB of memories neatly packed up and filed away was a lovely sight. I've been sleeping better since!
 

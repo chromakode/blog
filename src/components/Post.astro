@@ -1,0 +1,83 @@
+---
+export interface Props {
+  url: string
+  pubDate?: string
+}
+
+const { url, pubDate } = Astro.props
+
+const urlParts = url.split('/')
+const slug = urlParts[urlParts.length - 1]
+---
+
+<article>
+  / <a href={url} class="slug">{slug}</a>
+  {pubDate && <time>{pubDate}</time>}
+  <slot />
+</article>
+
+<style lang="less">
+  .slug {
+    font-weight: bold;
+  }
+
+  article {
+    line-height: 1.35em;
+    &:not(:last-child) {
+      margin-bottom: 4em;
+    }
+
+    :global(img),
+    :global(video) {
+      width: 100%;
+    }
+
+    :global(img.tall) {
+      display: block;
+      margin: 0 auto;
+      width: auto;
+      max-height: 25em;
+      max-width: 100%;
+    }
+
+    :global(time) {
+      margin-left: 1em;
+      font-size: 0.9em;
+    }
+
+    :global(h1) {
+      margin-top: 0.25em;
+    }
+
+    :global(h2) {
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      font-size: 1.25em;
+      color: #222;
+    }
+
+    :global(p > code),
+    :global(li > code) {
+      font-weight: normal;
+      padding: 0.1em 0.33em;
+      background: #f4f4f4;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    :global(pre) {
+      overflow: auto;
+      padding: 0.66em;
+      background-color: #f4f4f4 !important;
+    }
+
+    :global(hr) {
+      border: none;
+      border-bottom: 1px dashed gray;
+    }
+
+    :global(ol) {
+      padding-inline-start: 1.35em;
+    }
+  }
+</style>

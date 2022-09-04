@@ -1,3 +1,9 @@
+---
+layout: ../../layouts/PostLayout.astro
+title: Fixing hanging deja-dup S3 uploads
+pubDate: July 9, 2014
+---
+
 # Fixing hanging deja-dup S3 uploads
 
 After configuring [deja-dup](https://launchpad.net/deja-dup) to back up to [S3](http://aws.amazon.com/s3/), I hit a snag: the process seemed to hang during the upload phase.
@@ -16,22 +22,19 @@ It turns out that this is a transient error for new S3 buckets while the DNS cha
 
 As a side note, after tinkering with the IAM profile a bit, this is the minimal set of permissions I could find for the duplicity account:
 
+```json
+{
+  "Statement": [
     {
-       "Statement":[
-          {
-             "Effect":"Allow",
-             "Action":[
-                "s3:ListBucket"
-             ],
-             "Resource":"arn:aws:s3:::BUCKETNAME"
-          },
-          {
-             "Effect":"Allow",
-             "Action":[
-                "s3:GetObject",
-                "s3:PutObject"
-             ],
-             "Resource":"arn:aws:s3:::BUCKETNAME/*"
-          }
-       ]
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket"],
+      "Resource": "arn:aws:s3:::BUCKETNAME"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::BUCKETNAME/*"
     }
+  ]
+}
+```

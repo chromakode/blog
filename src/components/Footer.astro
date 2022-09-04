@@ -1,0 +1,67 @@
+---
+import ColorBar from './ColorBar.astro'
+
+const today = new Date()
+---
+
+<footer>
+  <div class="inner">
+    <span
+      >Licensed under
+      <a
+        target="_blank"
+        href="https://github.com/chromakode/blog/blob/master/LICENSE"
+        >Creative Commons BY-SA 4.0</a
+      >.
+    </span>
+    <div class="powered-by">
+      <span>Rendered by</span>
+      <a target="_blank" href="https://astro.build" class="astro-logo">
+        <img src="/static/astro.svg" width="22" height="22" alt="Astro" />
+      </a>
+      <a target="_blank" href="https://github.com/chromakode/blog">Source</a>
+    </div>
+  </div>
+  <ColorBar reversed />
+</footer>
+
+<style lang="less">
+  footer {
+    width: 100%;
+    border-top: 1px solid #dedede;
+    padding-top: 1em;
+    margin-top: 2em;
+  }
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+    font-size: 0.85em;
+    opacity: 0.7;
+    white-space: nowrap;
+
+    & > * {
+      padding: 0.25rem 0;
+    }
+  }
+
+  .powered-by {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    color: #333;
+  }
+
+  .astro-logo {
+    display: inline-flex;
+    margin-left: 0.25rem;
+    margin-right: 0.5rem;
+  }
+</style>

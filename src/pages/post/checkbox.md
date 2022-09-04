@@ -1,3 +1,9 @@
+---
+layout: ../../layouts/PostLayout.astro
+title: Checkbox
+pubDate: Apr 1, 2021
+---
+
 # Checkbox
 
 Hi xkcd visitors! Today we released ["Checkbox"](https://xkcd.com/2445), our 2021 April Fool's project. I proposed the original concept for this one and built the frontend. The backend and editor tooling was made by davean and [Kevin Cotrone](https://twitter.com/cotrone), with content written by a collection of amazing folks credited in the header of [the comic](https://xkcd.com/2445/) and the one and only Randall Munroe.
@@ -8,13 +14,9 @@ Here's a few stories from development.
 
 ---
 
-
-
 ## Morse all the way down
 
-
 If you take a peek at the JS code, [`comic.js`](https://xkcd.com/2445/morse/static/comic.js), you'll find that it's written in morse code!
-
 
 ```
 ".---- -.-. -.. - .. ... ...-..- -.-.-- ..--- . ---.. ..- -.-- -. ----- -----
@@ -42,7 +44,6 @@ I considered adding new characters to the morse table, but this seemed like it c
 Now we were getting somewhere! As a slight enhancement over base-36, I pulled in the excellent [base-x](https://www.npmjs.com/package/base-x) library, which accepts an arbitrary list of characters to encode/decode binary data into. I threw our 56 character morse code table into it, and we were in business!
 
 So, the JS code is actually encoded _twice_: once in base-56, and then in morse code. If you count UTF-8 -- which actually came into play when I needed to add an emoji to the source! -- it's running through three layers of encoding. :)
-
 
 ## A UI challenge disguised as a statistics problem
 
@@ -74,14 +75,13 @@ I think it's really interesting how this initially appeared to be a statistics a
 
 This is an example where working different angles of the same problem helped me to understand which problem was really necessary to solve, which resulted in a better solution.
 
-
 ## Unable to send the letter "E"?
 
 Shortly before launching, we discovered a really strange bug: if you tried to send just the letter "E", you wouldn't see the intended response. The server did not recognize the input, even though we specifically handled "E". Also, two "E"s, or any other combination of letters, was working normally.
 
 So we started digging into both the client and the backend to see what was going on. We took great pains to make the API for this project use morse code in the transport. If you take a look at the network inspector, you'll notice that the URLs requested have morse code in them:
 
-```
+```sh
 chromakode@atavist:~$ curl 'https://xkcd.com/2445/morse/.../...._..' -v
 > GET /2445/morse/.../...._.. HTTP/1.1
 >
@@ -89,6 +89,7 @@ chromakode@atavist:~$ curl 'https://xkcd.com/2445/morse/.../...._..' -v
 < Content-Type: text/x-morse;charset=utf-8
 -.. -... ...-- ...-- ....- .- .- -... -....- ----. ..--- .- .---- -....- .---- .---- . -... -....- ---.. ----- ----- .---- -....- ---.. -.-. .---- -.... ....- ..... ....- ..-. -... ----- ..--- .- / .... . .-.. .-.. --- -.-.-- / .- -. -.-- -... --- -.. -.-- / --- ..- - / - .... . .-. . ..--..
 ```
+
 The letter "E", as it happens, is the simplest character to enter in morse code: it's a single "." -- hence how we discovered this relatively obscure bug so quickly.
 
 Back to the problem at hand. We noticed that the client wasn't sending the morse for the letter "E" along. Instead, the comic would request as if nothing had been entered at all: an empty path. Investigating a step further, I verified that the client was generating and requesting the right URL with the morse letter "E" in it! What was going on?
@@ -97,7 +98,7 @@ Then, an _even stranger thing happened_. I copied and pasted the correct URL int
 
 Ok, next idea. Was there a spec somewhere that described URLs ending in a period? My googling eventually led me to [this StackOverflow post by user "speedplane"](https://stackoverflow.com/a/63124092) (which at the time of writing has one vote):
 
->"As other answers have noted, periods are allowed in URLs, however you need to be careful. If a single or double period is used in part of a URL's path, the browser will treat it as a change in the path, and you may not get the behavior you want."
+> "As other answers have noted, periods are allowed in URLs, however you need to be careful. If a single or double period is used in part of a URL's path, the browser will treat it as a change in the path, and you may not get the behavior you want."
 
 Evidently, a bare `.` or `..` in a URL will be interpreted by browsers similar to UNIX filesystem paths: as referring to the current and parent directory respectively. This appears to be particularly relevant for [relative URLs](https://denmchenry.com/posts/relative-urls/). So in addition to "E", the letter "I" (morse: "..") would also be affected.
 

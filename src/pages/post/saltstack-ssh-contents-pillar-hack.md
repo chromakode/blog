@@ -1,3 +1,9 @@
+---
+layout: ../../layouts/PostLayout.astro
+title: A hacky workaround for empty contents_pillar in salt-ssh
+pubDate: July 9, 2014
+---
+
 # A hacky workaround for empty `contents_pillar` in `salt-ssh`
 
 I've been really enjoying learning to use [SaltStack](http://docs.saltstack.com/en/latest/) to configure my servers and VMs. The relatively new `salt-ssh` transport is incredibly convenient for managing a small number of project cloud servers. However, there is one limitation I've discovered when handling certificates and private keys: `file.managed`'s `contents_pillar` parameter outputs blank files.

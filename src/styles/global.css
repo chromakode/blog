@@ -1,0 +1,14 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: sans-serif;
+  margin: 0;
+  line-height: 1.5;
+  --content-max-width: 45rem;
+}

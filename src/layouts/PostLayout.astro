@@ -1,0 +1,35 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+import Main from '../components/Main.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import Post from '../components/Post.astro'
+
+export interface Props {
+  content: {
+    url: string
+    title: string
+    description: string
+    pubDate?: string
+    updatedDate?: string
+  }
+}
+
+const {
+  content: { url, title, description, pubDate },
+} = Astro.props
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body>
+    <Header />
+    <Main>
+      <Post url={url} pubDate={pubDate}><slot /></Post>
+    </Main>
+    <Footer />
+  </body>
+</html>

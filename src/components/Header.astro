@@ -1,0 +1,145 @@
+---
+import '@fontsource/lato/400.css'
+import '@fontsource/lato/900.css'
+import ColorBar from './ColorBar.astro'
+
+export interface Props {
+  front?: boolean
+}
+
+const { front } = Astro.props
+---
+
+<header class:list={{ front: front }}>
+  {
+    front && (
+      <>
+        <div id="spinner" aria-hidden>
+          <canvas id="logo" />
+        </div>
+        <div class="heading">
+          <h1>Hey, I'm Max.</h1>
+          <h2>This is my journal and sketchbook.</h2>
+        </div>
+        <div class="scroll-down" aria-hidden />
+      </>
+    )
+  }
+  <ColorBar />
+</header>
+<a id="side-logo" href="/" aria-hidden></a>
+
+<style lang="less">
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    font-size: 1vmin;
+    background: white;
+
+    &.front {
+      position: relative;
+      height: 100vh;
+      height: calc(var(--vh, 1vh) * 100);
+      z-index: 20; // cover side logo
+    }
+  }
+
+  .heading {
+    flex: 1;
+    font-family: 'Lato', sans-serif;
+  }
+
+  h1,
+  h2 {
+    margin: 0;
+    flex: 1;
+  }
+
+  h1 {
+    font-size: 9em;
+    font-weight: 900;
+    color: #111;
+  }
+
+  h2 {
+    font-size: 4em;
+    font-weight: normal;
+    color: #444;
+  }
+
+  #spinner {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 75%;
+    text-align: left;
+
+    &:active {
+      cursor: move;
+    }
+  }
+
+  #logo {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+  #side-logo {
+    display: block;
+    position: fixed;
+    width: 52px;
+    height: 52px;
+    left: 20px;
+    top: 20px;
+    transition: opacity 0.5s ease;
+    z-index: 10;
+  }
+
+  header.front #side-logo {
+    opacity: 0;
+  }
+
+  @media (max-width: 900px) {
+    #side-logo {
+      left: auto;
+      top: auto;
+      right: 6px;
+      bottom: 6px;
+    }
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .scroll-down {
+    width: 5vmin;
+    height: 5vmin;
+    margin-bottom: 2rem;
+    border: 3px solid #5faf5f;
+    border-top: none;
+    border-right: none;
+    transform: translateX(-1.5px) scaleY(0.65) rotate(-45deg);
+    transition: opacity 1s ease;
+  }
+
+  body.scrolled {
+    .scroll-down {
+      opacity: 0;
+    }
+  }
+
+  body.below-fold {
+    #side-logo {
+      opacity: 1;
+    }
+  }
+</style>
+<script src="./logo.js"></script>

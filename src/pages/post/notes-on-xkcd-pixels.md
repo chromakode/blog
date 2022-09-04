@@ -1,14 +1,20 @@
+---
+layout: ../../layouts/PostLayout.astro
+title: Notes from the development of xkcd's "Pixels"
+pubDate: September 6, 2014
+---
+
 # Notes from the development of xkcd's "Pixels"
 
-Over the years, I've had the pleasure of hacking on the frontend code for a bunch of [xkcd](http://xkcd.com)'s interactive comics, including: [unixkcd](http://uni.xkcd.com/), [xk3d](http://3d.xkcd.com/), [Umwelt](http://xkcd.com/1037/), [Time](http://xkcd.com/1190/), [Externalities](http://xkcd.com/1193/), and [Lorenz](http://xkcd.com/1350/). This weekend, I was pinged about making something to coincide with the release of *[What If?: Serious Scientific Answers to Absurd Hypothetical Questions](http://whatif.xkcd.com/book/)*. The process of building ["Pixels"](http://xkcd.com/1416/) was even crazier than our usual April Fools rush, and had the extra intrigue of being live during [Randall Munroe's Colbert Report interview](http://thecolbertreport.cc.com/guests/randall-munroe).
+Over the years, I've had the pleasure of hacking on the frontend code for a bunch of [xkcd](http://xkcd.com)'s interactive comics, including: [unixkcd](http://uni.xkcd.com/), [xk3d](http://3d.xkcd.com/), [Umwelt](http://xkcd.com/1037/), [Time](http://xkcd.com/1190/), [Externalities](http://xkcd.com/1193/), and [Lorenz](http://xkcd.com/1350/). This weekend, I was pinged about making something to coincide with the release of _[What If?: Serious Scientific Answers to Absurd Hypothetical Questions](http://whatif.xkcd.com/book/)_. The process of building ["Pixels"](http://xkcd.com/1416/) was even crazier than our usual April Fools rush, and had the extra intrigue of being live during [Randall Munroe's Colbert Report interview](http://thecolbertreport.cc.com/guests/randall-munroe).
 
-Here's a few anecdotes from the development of *Pixels* and a quick explanation of how it works. I hadn't worked with some of the graphics programming patterns (coordinate systems!) for a while, so I ended up making some classic mistakes -- hopefully you can avoid repeating them. :)
+Here's a few anecdotes from the development of _Pixels_ and a quick explanation of how it works. I hadn't worked with some of the graphics programming patterns (coordinate systems!) for a while, so I ended up making some classic mistakes -- hopefully you can avoid repeating them. :)
 
-----
+---
 
 ## background
 
-*Pixels* is an infinitely zoomable black-and-white comic. As you zoom in, the pixels that make up the image resolve into smaller square comic panels -- dark ones for black pixels, light ones for white. Depending on which panel you are looking at, the set of pixel panels will be different. These comics can be further zoomed into, revealing new pixels, ad infinitum.
+_Pixels_ is an infinitely zoomable black-and-white comic. As you zoom in, the pixels that make up the image resolve into smaller square comic panels -- dark ones for black pixels, light ones for white. Depending on which panel you are looking at, the set of pixel panels will be different. These comics can be further zoomed into, revealing new pixels, ad infinitum.
 
 [view the source code on GitHub](https://github.com/chromakode/xkcd-pixels)
 
@@ -22,14 +28,14 @@ For this project, I chose to use vanilla JavaScript with no external dependencie
 
 ## to infinity and beyond
 
-One of the core challenges to *Pixels* was representing the infinitely deep structure and your position within it. As you zoom in, the fractal pixel space is generated lazily on the fly and stored persistently, so that when you zoom back out, everything is where you first saw it. 
+One of the core challenges to _Pixels_ was representing the infinitely deep structure and your position within it. As you zoom in, the fractal pixel space is generated lazily on the fly and stored persistently, so that when you zoom back out, everything is where you first saw it.
 
 Each panel has a 2d array mapping: a pixel stores the type of panel it expands to, and possibly a reference to a deeper 2d array of its own constituent pixels. Appropriately, this data structure is named a `Turtle`, a nod to the comic and ["Turtles all the way down"](http://en.wikipedia.org/wiki/Turtles_all_the_way_down).
 
 To represent your position within the comic, it would be convenient to store the zoom level as a simple scale multiplier, but you'll eventually hit the ceiling of JavaScript's `Number` type (as an IEEE 754 Double, that gives you `log(Number.MAX_VALUE, 600)` &approx; 111 zoom nestings). I wanted to avoid dealing with the intricacies of floating point precision, so I decided to represent the position in two parts:
 
- * `pos`: a stack of the exact panel pixels you've descended into
- * `offset`: a floating point position (x, y, and scale) relative to `pos`
+- `pos`: a stack of the exact panel pixels you've descended into
+- `offset`: a floating point position (x, y, and scale) relative to `pos`
 
 Here's a couple examples:
 
@@ -39,8 +45,7 @@ To render the comic, we locate the `Turtle` that accords to `pos` and draw the p
 
 One complexity of relying on `pos` for positioning is that it needs to update when you zoom into a panel / out of panel / pan to a different panel. When a pixel panel is zoomed in past 100% size, its location is added to the `pos` stack, and `offset` is recalculated with the panel as the new point of reference. Some of the hairiest code in this project came down to calculating the new values of `offset`.
 
-There's a small trick I used to simplify the handling of the various cases in which `pos` needs to be updated.  If the current reference panel is detected to be offscreen or below the 100% size threshold, `pos` and `offset` are recalculated so that the point of reference is the containing panel, as if you were zoomed in really far. This then triggers the check for "zoomed in past 100% size", which causes a new reference point to be chosen using the same logic as if you'd zoomed to it.
-
+There's a small trick I used to simplify the handling of the various cases in which `pos` needs to be updated. If the current reference panel is detected to be offscreen or below the 100% size threshold, `pos` and `offset` are recalculated so that the point of reference is the containing panel, as if you were zoomed in really far. This then triggers the check for "zoomed in past 100% size", which causes a new reference point to be chosen using the same logic as if you'd zoomed to it.
 
 ## corner cases
 
@@ -52,11 +57,12 @@ I then realized a problem with that thinking: if you zoom into a corner, you can
 
 This thought led me to make the worst design decision of the project.
 
+```js
+TurtlesDown.prototype.render = function() {
+  // there is no elegance here. only sleep deprivation and regret.
+```
 
-    TurtlesDown.prototype.render = function() {
-      // there is no elegance here. only sleep deprivation and regret.
-
-Brain-drained at 3am, and armed with the knowledge that there could be *up to* 4 panels onscreen at any time, I began to write code from the perspective of where those 4 panels would be. I decided to let `pos` reference the panel at the top-left-most panel onscreen, and then draw the other 3 panels shifted over by one where appropriate.
+Brain-drained at 3am, and armed with the knowledge that there could be _up to_ 4 panels onscreen at any time, I began to write code from the perspective of where those 4 panels would be. I decided to let `pos` reference the panel at the top-left-most panel onscreen, and then draw the other 3 panels shifted over by one where appropriate.
 
 For me, programming late at night is dangerously similar to being a rat in a maze. I can follow along the path step-by-step well enough, but can't see far enough down the line to tell whetcher I've made the right turn until it's too late. With proper rest and a step back to think, it's clear to see what's going on, but in the the moment when things are broken it's tempting to plow through. Once I got 4 panels drawing properly, I realized the real corner case:
 
@@ -66,20 +72,23 @@ At this point, I needed to get something working and was too far down the path t
 
 I'm not proud of the `render()` function or how it turned out -- but I'm really happy and somewhat bemused that when all is said and done, that nightmare beast seems to work properly.
 
-
 ## "I'm not sure how this works, but the algebra is right"
 
 Like many computer graphics coordinate systems, Canvas places (0,0) in the top-left. Early on I decided to translate this so that the origin was in the center, in order to simplify zooming from the center of the viewport (`centerOffset = size / 2`). A while later, I discovered that the simple `ctx.translate(centerOffset, centerOffset)` call I was using didn't apply to `ctx.putImageData()`, the main function used to draw pixel panel images. I considered two options: either I could figure out the geometry to change my zooming code to handle an origin of (0,0), or manually add `centerOffset` to all of my `putImageData()` calls and calculations. I did the latter because it was quick. That was a mistake.
 
 What I didn't foresee was how much splattering `centerOffset` everywhere would increase the complexity of the equations. The complexity arises when `centerOffset` is multiplied by `offset.scale` or needs to be removed from a value for comparison. For example (from `_zoom()`, which ended up needing to know how to origin shift anyway!):
 
-    // ugh.
-    this.offset.x = ((this.offset.x - centerOffset) * this.offset.scale - scaleDeltaX) / this.offset.scale + centerOffset
+```js
+// ugh.
+this.offset.x =
+  ((this.offset.x - centerOffset) * this.offset.scale - scaleDeltaX) /
+    this.offset.scale +
+  centerOffset
+```
 
 In general, it's a good idea to do your translate operation as late in the chain as possible. Eliminating or externalizing as many operations as possible helps keep things understandable. I knew better, but I didn't see the true cost until it was too late...
 
 Eventually, the complexity of some of my positioning code reached the point where I could no longer think about it intuitively. This led to some very frustrating middle-of-the-night flailing in which I sorta understood what I needed to express mathematically, but the resulting code wouldn't work properly. The approach that finally cracked those problems was going back to base assumptions and doing the algebra by hand. It's really hard to mess up algebra, even at 5am. However, this had the amusing consequence of me no longer grokking how some of my own code worked. I still don't understand some of the math intuitively, sadly.
-
 
 ## TV audiences are mobile
 
@@ -90,7 +99,6 @@ We anticipated a higher proportion of the Colbert Report referrals would be usin
 People watching TV don't browse on computers. They use their phones.
 
 As I watched the traffic wave arrive via realtime analytics, my heart sank. The visitors were largely mobile! A much, much larger proportion than those using IE. Our mobile experience wasn't completely broken, but if we'd been considering the mobile traffic from the start, we'd have focused on it a good deal more.
-
 
 ## berzerking works (sometimes)
 
@@ -104,6 +112,6 @@ Yet -- sometimes, for projects small enough to fit fully in the head, and rushed
 
 When we work on interactive comics at xkcd, we take pride in experimenting with the medium. It's a privilege to combine forces with their masterful backend engineer + Randall Munroe's witty and charming creativity. Each collab is an experiment in what kinds of new experiences we can create with our combined resources at our disposal.
 
-One of the fun aspects of working with comics is you don't *expect* them to think, to react to your behavior, to explore you as you explore them. That lack of expectation allows us to create magic. Every now and then, it's good to shake things up and push the near-infinite creative possibilities we have on the modern web. The health and sanity costs on these projects are high, but for me personally, novelty is the impetus to take part in these crazy code and art dives.
+One of the fun aspects of working with comics is you don't _expect_ them to think, to react to your behavior, to explore you as you explore them. That lack of expectation allows us to create magic. Every now and then, it's good to shake things up and push the near-infinite creative possibilities we have on the modern web. The health and sanity costs on these projects are high, but for me personally, novelty is the impetus to take part in these crazy code and art dives.
 
 Overall, my favorite part of working on these projects is the moment after Randall's art & creative comes in: when I get to experience the project for the first time. Even though I know the general mechanic of the comic, when the backend, frontend, art, and humor all click into place simultaneously, it becomes something new. That first moment of discovery is as much a joy and surprise to me as it is to you.

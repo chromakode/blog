@@ -1,0 +1,73 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Main from '../components/Main.astro'
+import Post from '../components/Post.astro'
+import Footer from '../components/Footer.astro'
+import type { MarkdownInstance, Page } from 'astro'
+
+export async function getStaticPaths({ paginate }: { paginate: any }) {
+  const posts = (await Astro.glob('./post/*.md')).sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).valueOf() -
+      new Date(a.frontmatter.pubDate).valueOf(),
+  )
+  const pages = paginate(posts, { pageSize: 3 })
+  return pages
+}
+
+export interface Props {
+  page: Page<MarkdownInstance<any>>
+}
+
+const { page } = Astro.props
+const isFirstPage = page.currentPage === 1
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header front={isFirstPage} />
+    <Main
+      >{
+        page.data.map(({ url, frontmatter: { pubDate }, compiledContent }) => (
+          <Post url={url!} pubDate={pubDate} set:html={compiledContent()} />
+        ))
+      }
+    </Main>
+    <nav>
+      <a
+        href={new URL(page.url.prev || '/', Astro.url)}
+        class:list={{ disabled: isFirstPage }}
+        aria-disabled={isFirstPage}>&lsaquo; Previous Page</a
+      >
+      {
+        page.url.next != null && (
+          <a href={new URL(page.url.next, Astro.url)}>Next Page &rsaquo;</a>
+        )
+      }
+    </nav>
+    <Footer />
+    <style>
+      nav {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        max-width: var(--content-max-width);
+        margin: 0 auto;
+        padding: 1rem;
+        box-sizing: border-box;
+      }
+
+      .disabled {
+        pointer-events: none;
+        color: gray;
+        text-decoration: none;
+      }
+    </style>
+  </body>
+</html>

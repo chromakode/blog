@@ -1,4 +1,8 @@
-Title: The `aptitude why` command is awesome
+---
+layout: ../../layouts/PostLayout.astro
+title: aptitude why
+pubDate: July 23, 2014
+---
 
 The `aptitude why` command is awesome. At a glance, it tells you the whole dependency tree that led a package being installed, starting with the user's action:
 

@@ -1,3 +1,9 @@
+---
+layout: ../../layouts/PostLayout.astro
+title: A character encoding gotcha with React
+pubDate: January 12, 2015
+---
+
 # A character encoding gotcha with React
 
 Tonight I noticed that in a React 0.12 codebase of mine, `&nbsp;` entities were rendering as `"Â "` in Mobile Safari. After a quick search I came across this [StackOverflow answer](http://stackoverflow.com/a/1462039) which identifies the `"Â "` output as a [UTF-8](http://en.wikipedia.org/wiki/UTF-8) formatted [non-breaking space](http://en.wikipedia.org/wiki/Non-breaking_space#Encodings) character being interpreted as [ISO-8859-1](http://en.wikipedia.org/wiki/ISO/IEC_8859-1).
