@@ -11,6 +11,7 @@ body {
   margin: 0;
   line-height: 1.5;
   --content-max-width: 45rem;
+  --color-bar-height: 1.5vh;
 }
 
 /* Show scrollbar during render (reduces layout thrash since headings are sized via vmin. */

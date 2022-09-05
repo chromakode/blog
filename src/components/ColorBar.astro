@@ -1,23 +1,30 @@
 ---
 export interface Props {
+  sticky?: boolean
   reversed?: boolean
 }
 
-const { reversed } = Astro.props
+const { sticky, reversed } = Astro.props
 ---
 
-<div class:list={['color-bars', { reversed: reversed }]}></div>
+<div class:list={['color-bars', { sticky, reversed }]}></div>
 
 <style lang="less">
   .color-bars {
     display: flex;
     width: 100%;
-    height: 1.5vh;
+    height: var(--color-bar-height);
     opacity: 0;
     transition: opacity 0.5s ease;
+    z-index: 20;
 
     &.reversed {
       transform: scaleX(-1);
+    }
+
+    &.sticky {
+      position: sticky;
+      top: -1vh;
     }
 
     :global(.bar) {

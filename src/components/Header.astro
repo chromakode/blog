@@ -25,8 +25,8 @@ const { front } = Astro.props
       </>
     )
   }
-  <ColorBar />
 </header>
+<ColorBar sticky />
 <a id="side-logo" href="/" title="Home"></a>
 
 <style lang="less">
@@ -43,7 +43,7 @@ const { front } = Astro.props
     &.front {
       position: relative;
       height: 100vh;
-      height: calc(var(--vh, 1vh) * 100);
+      height: calc(var(--vh, 1vh) * 100 - var(--color-bar-height));
       z-index: 20; // cover side logo
     }
   }
