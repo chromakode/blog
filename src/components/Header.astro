@@ -10,42 +10,37 @@ export interface Props {
 const { front } = Astro.props
 ---
 
-<header class:list={{ front: front }}>
-  {
-    front && (
-      <>
-        <div id="spinner" aria-hidden="true">
-          <canvas id="logo" />
-        </div>
-        <div class="heading">
-          <h1>Hey, I'm Max.</h1>
-          <h2>This is my journal and sketchbook.</h2>
-        </div>
-        <div class="scroll-down" aria-hidden="true" />
-      </>
-    )
-  }
-</header>
+{
+  front && (
+    <header>
+      <div id="spinner" aria-hidden="true">
+        <canvas id="logo" />
+      </div>
+      <div class="heading">
+        <h1>Hey, I'm Max.</h1>
+        <h2>This is my journal and sketchbook.</h2>
+      </div>
+      <div class="scroll-down" aria-hidden="true" />
+    </header>
+  )
+}
 <ColorBar sticky />
-<a id="side-logo" href="/" title="Home"></a>
+<a id="side-logo" class:list={{ front }} href="/" title="Home"></a>
 
 <style lang="less">
   header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
     text-align: center;
     overflow: hidden;
     font-size: 1vmin;
     background: white;
-
-    &.front {
-      position: relative;
-      height: 100vh;
-      height: calc(var(--vh, 1vh) * 100 - var(--color-bar-height));
-      z-index: 20; // cover side logo
-    }
+    position: relative;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100 - var(--color-bar-height));
+    width: 100%;
+    z-index: 20; // cover side logo
   }
 
   .heading {
@@ -106,7 +101,7 @@ const { front } = Astro.props
     z-index: 10;
   }
 
-  header.front #side-logo {
+  #side-logo.front {
     opacity: 0;
   }
 
