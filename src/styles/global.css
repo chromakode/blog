@@ -11,9 +11,9 @@ body {
   margin: 0;
   line-height: 1.5;
   --content-max-width: 45rem;
+}
 
-  /* Show scrollbar during render (reduces layout thrash since headings are sized via vmin. */
-  &.front {
-    min-height: 101vh;
-  }
+/* Show scrollbar during render (reduces layout thrash since headings are sized via vmin. */
+body.front {
+  min-height: 101vh;
 }
