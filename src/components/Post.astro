@@ -22,7 +22,7 @@ const slug = urlParts[urlParts.length - 1]
   }
 
   article {
-    line-height: 1.35em;
+    line-height: 1.5em;
     &:not(:last-child) {
       margin-bottom: 4em;
     }
@@ -81,7 +81,8 @@ const slug = urlParts[urlParts.length - 1]
       border-bottom: 1px dashed gray;
     }
 
-    :global(ol) {
+    :global(ol),
+    :global(ul) {
       padding-inline-start: 1.35em;
     }
   }
