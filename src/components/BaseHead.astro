@@ -35,4 +35,4 @@ const { title, description = SITE_DESCRIPTION, image = '/static/social.png' } = 
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<Analytics />
+{import.meta.env.PROD && <Analytics />}
