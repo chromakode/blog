@@ -2,7 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css'
-import { SITE_DESCRIPTION} from '../config'
+import { SITE_DESCRIPTION } from '../config'
 import Analytics from './Analytics.astro'
 
 export interface Props {
@@ -11,7 +11,11 @@ export interface Props {
   image?: string
 }
 
-const { title, description = SITE_DESCRIPTION, image = '/static/social.png' } = Astro.props
+const {
+  title,
+  description = SITE_DESCRIPTION,
+  image = '/static/social.png',
+} = Astro.props
 ---
 
 <meta charset="utf-8" />
