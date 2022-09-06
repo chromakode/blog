@@ -10,7 +10,7 @@ pubDate: Sep 5, 2022
 
 Getting a cranial MRI has been on my bucket list since I was a young kid -- probably inspired by watching PBS science specials. This summer, out of necessity, my opportunity came knocking.
 
-[Looking Glass](https://look.glass) is a novel display technology capable of glasses-free 3D images. It works by using fancy optics to display a [different image depending on the angle it's viewed at](https://docs.lookingglassfactory.com/keyconcepts/how-it-works). Similar to the 3D dinosaurs and skulls which adorned stickers and trapper keepers in my childhood.
+[Looking Glass](https://look.glass) is a novel display technology capable of glasses-free 3D images. It works by using fancy optics to display a [different image depending on the angle it's viewed at](https://docs.lookingglassfactory.com/keyconcepts/how-it-works). Similar to the [3D dinosaurs](https://www.ebay.com/itm/174647352938) and skulls which adorned stickers and trapper keepers in my childhood.
 
 The Looking Glass presented an opportunity to experience something utterly sci-fi to my child self: the possibility to look inside my own brain in 3D. When I received my scans, I knew what I had to do. The video above is a [Looking Glass Portrait](https://lookingglassfactory.com/looking-glass-portrait) displaying a rendering of my head, arterial blood vessels, and brain.
 
