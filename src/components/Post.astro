@@ -12,22 +12,17 @@ const slug = urlParts[urlParts.length - 1]
 ---
 
 <article>
-  {
-    !isListingPage && (
-      <a href="/" class="slug">
-        chromakode
-      </a>
-    )
-  }
-  /
-  <a href={url} class="slug">{slug}</a>
+  <span class="breadcrumbs">
+    {!isListingPage && <a href="/">chromakode</a>}
+    /
+    <a href={url}>{slug}</a>
+  </span>
   {pubDate && <time>{pubDate}</time>}
   <slot />
 </article>
 
 <style lang="less">
-  .slug {
-    display: inline-block;
+  .breadcrumbs > a {
     font-weight: bold;
   }
 
