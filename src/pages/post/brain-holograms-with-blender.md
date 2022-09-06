@@ -25,7 +25,7 @@ I couldn't find an up-to-date tutorial for Blender 3.2 using OpenVDB volumes, so
 
 Personally, I'm not trying to achieve anything medically useful here; I just want something cool to look at to remind myself I'm [made out of meat](https://www.mit.edu/people/dpolicar/writing/prose/text/thinkingMeat.html).
 
-My MRIs arrived as zips of [DICOM](https://en.wikipedia.org/wiki/DICOM) files containing various sequences of image slices with different parameters. These image sequences can be turned into 3D surfaces using fancy algorithms or rendered as [voxel](https://en.wikipedia.org/wiki/Voxel) volumes. It's the raw voxel data that's of interest to me here, with the value of each voxel relating to the density of the material at each position in space.
+My MRIs arrived as zips of [DICOM](https://en.wikipedia.org/wiki/DICOM) files containing various sequences of image slices with different parameters. These image sequences can be turned into 3D surfaces using fancy algorithms or rendered as [voxel](https://en.wikipedia.org/wiki/Voxel) volumes. It's the raw voxel data that's of interest to me here, with the value of each voxel relating to the kind of the material at each position in space.
 
 Unfortunately it's not currently possible to import DICOM into Blender directly, or even convert DICOM directly into the industry-standard [OpenVDB](https://www.openvdb.org) format. We have to do it in two hops, via a world tour of open source scientific imaging software.
 
