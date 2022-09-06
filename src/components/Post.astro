@@ -18,7 +18,9 @@ const slug = urlParts[urlParts.length - 1]
     <a href={url}>{slug}</a>
   </span>
   {pubDate && <time>{pubDate}</time>}
-  <slot />
+  <div class="post">
+    <slot />
+  </div>
 </article>
 
 <style lang="less">
@@ -31,12 +33,14 @@ const slug = urlParts[urlParts.length - 1]
     &:not(:last-child) {
       margin-bottom: 4em;
     }
+  }
 
-    :global(a:not(:hover):not(.slug)) {
+  article > .post {
+    :global(a:not(:hover)) {
       text-decoration-color: rgba(var(--link-color), 0.25);
     }
 
-    :global(a:visited:not(:hover):not(.slug)) {
+    :global(a:visited:not(:hover)) {
       text-decoration-color: rgba(var(--link-visited-color), 0.25);
     }
 
