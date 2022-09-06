@@ -12,9 +12,19 @@ body {
   line-height: 1.5;
   --content-max-width: 45rem;
   --color-bar-height: 1.5vh;
+  --link-color: 0, 0, 238;
+  --link-visited-color: 85, 26, 139;
 }
 
 /* Show scrollbar during render (reduces layout thrash since headings are sized via vmin. */
 body.front {
   min-height: 101vh;
+}
+
+a {
+  color: rgb(var(--link-color));
+}
+
+a:visited {
+  color: rgb(var(--link-visited-color));
 }
