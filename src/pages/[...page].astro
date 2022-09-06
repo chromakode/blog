@@ -35,7 +35,12 @@ const isFirstPage = page.currentPage === 1
     <Main
       >{
         page.data.map(({ url, frontmatter: { pubDate }, compiledContent }) => (
-          <Post url={url!} pubDate={pubDate} set:html={compiledContent()} />
+          <Post
+            url={url!}
+            pubDate={pubDate}
+            isListingPage
+            set:html={compiledContent()}
+          />
         ))
       }
     </Main>
