@@ -27,11 +27,11 @@ const slug = urlParts[urlParts.length - 1]
       margin-bottom: 4em;
     }
 
-    :global(a:not(.slug)) {
+    :global(a:not(:hover):not(.slug)) {
       text-decoration-color: rgba(var(--link-color), 0.25);
     }
 
-    :global(a:visited:not(.slug)) {
+    :global(a:visited:not(:hover):not(.slug)) {
       text-decoration-color: rgba(var(--link-visited-color), 0.25);
     }
 
