@@ -304,7 +304,7 @@ function sizePage() {
   document.documentElement.style.setProperty('--vh', `${vh}px`)
 }
 
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('spinner')) {
     cubeSpinner()
   }
