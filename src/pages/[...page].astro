@@ -3,16 +3,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
 import Main from '../components/Main.astro'
-import Post from '../components/Post.astro'
+import Post, { getPosts } from '../components/Post.astro'
 import Footer from '../components/Footer.astro'
 import type { MarkdownInstance, Page } from 'astro'
 
 export async function getStaticPaths({ paginate }: { paginate: any }) {
-  const posts = (await Astro.glob('./post/*.md')).sort(
-    (a, b) =>
-      new Date(b.frontmatter.pubDate).valueOf() -
-      new Date(a.frontmatter.pubDate).valueOf(),
-  )
+  const posts = await getPosts()
   const pages = paginate(posts, { pageSize: 3 })
   return pages
 }
@@ -21,6 +17,7 @@ export interface Props {
   page: Page<MarkdownInstance<any>>
 }
 
+const posts = await getPosts()
 const { page } = Astro.props
 const isFirstPage = page.currentPage === 1
 ---
@@ -45,23 +42,64 @@ const isFirstPage = page.currentPage === 1
       }
     </Main>
     <nav>
-      <a
-        href={page.url.prev || '/'}
-        class:list={{ disabled: isFirstPage }}
-        aria-disabled={isFirstPage}>&lsaquo; Previous Page</a
-      >
-      {page.url.next != null && <a href={page.url.next}>Next Page &rsaquo;</a>}
+      <div class="pages">
+        <a
+          href={page.url.prev || '/'}
+          class:list={{ disabled: isFirstPage }}
+          aria-disabled={isFirstPage}>&lsaquo; Previous Page</a
+        >
+        {
+          page.url.next != null && (
+            <a href={page.url.next}>Next Page &rsaquo;</a>
+          )
+        }
+      </div>
+      {
+        isFirstPage && (
+          <div class="index gray">
+            <ul>
+              {posts.map((post) => (
+                <li>
+                  <a href={post.url}>{post.frontmatter.title}</a>
+                  <time>{post.frontmatter.pubDate}</time>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
     </nav>
     <Footer />
-    <style>
+    <style lang="less">
       nav {
-        display: flex;
         width: 100%;
-        justify-content: space-between;
         max-width: var(--content-max-width);
         margin: 0 auto;
         padding: 1rem;
         box-sizing: border-box;
+
+        .pages {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .index {
+          margin-top: 3rem;
+          line-height: 200%;
+
+          time {
+            color: #777;
+          }
+          ul {
+            padding: 0;
+          }
+
+          li {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+          }
+        }
       }
 
       a.disabled,

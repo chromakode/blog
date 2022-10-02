@@ -1,4 +1,11 @@
 ---
+export async function getPosts() {
+  return (await Astro.glob('../pages/post/*.md')).sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).valueOf() -
+      new Date(a.frontmatter.pubDate).valueOf(),
+  )
+}
 export interface Props {
   url: string
   pubDate?: string
