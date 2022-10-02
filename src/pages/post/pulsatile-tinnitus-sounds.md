@@ -26,7 +26,7 @@ Later that night, I put in earplugs and noted that the sound was still there. Af
 
 Many months later, I met an [amazing team who specialize in Pulsatile Tinnitus at UCSF](https://www.ucsfhealth.org/clinics/pulsatile-tinnitus-clinic), where I was diagnosed with a likely [DAVF](http://neuroangio.org/patient-information/patient-information-brain-dural-fistula). If you look closely, you might be able to spot it in these [holographic explorations of my MRI scans](/post/brain-holograms-with-blender). I'm very lucky that these sounds have been my only symptom, and I'm scheduled for an operation which could fix the underlying cause.
 
-Since my situation is relatively rare, I wanted to take this opportunity to preserve my qualitative experience of these phantom sounds before they're (hopefully!) gone. I hope this can provide a data point for kinds of sounds one can experience.
+Since my situation is relatively rare, I wanted to take this opportunity to preserve my qualitative experience of these phantom sounds before they're (hopefully!) gone. I hope this can provide a data point for the kinds of sounds one can experience.
 
 ## What does my Pulsatile Tinnitus sound like?
 
@@ -74,7 +74,7 @@ It can also be higher pitched. One thing I tried to represent here is how the pi
 
 <video loop controls preload="metadata" src="/post/pulsatile-tinnitus-sounds/whine-high.mp4" style="aspect-ratio: 16 / 9"></video>
 
-Perhaps the biggest flaw in these examples is they don't capture how dynamic the sound is. It doesn't remain exactly in one pitch or timbre for long as these samples. I did include some organic variation in them (e.g. by varying the tempo / my "heart rate"), but in practice, this is a weird, varying, chaotic system. I've thought about building a bigger synth which transitions between these sounds, but feel that would veer further into the realm of artistic interpretation, since it'll be harder for me to compare with the real thing.
+Perhaps the biggest flaw in these examples is they don't capture how dynamic the sound is. It doesn't remain exactly in one pitch or timbre for as long as these samples. I did include some organic variation in them (e.g. by varying the tempo / my "heart rate"), but in practice, this is a weird, varying, chaotic system. I've thought about building a bigger synth which transitions between these sounds, but feel that would veer further into the realm of artistic interpretation, since it'll be harder for me to compare with the real thing.
 
 ## Bespoke save files
 
