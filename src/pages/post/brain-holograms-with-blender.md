@@ -71,7 +71,7 @@ Here's a screencap of the full workflow in Blender.
 
 Looking Glass provides a [Blender Addon](https://lookingglassfactory.com/blender-add-on) which renders [quilts](https://docs.lookingglassfactory.com/keyconcepts/quilts). Quilts are image mosaics of each distinct viewpoint shown by the display. You can even render quilt animations and view them in 3D on the device! Having both spatial and time data to play with really opens up a mind-boggling range of effects. It can also take a mind-boggling amount of time to render, since each quilt consists of ~50-100 smaller individual renders. I'm 5233 CPU-hours into raytracing my first 250 frame animation, and still less than halfway done. 😂
 
-[![3D brain render quilt](/post/brain-holograms-with-blender/quilt.png)](/post/brain-holograms-with-blender/quilt.png)
+[![3D brain render quilt](/post/brain-holograms-with-blender/quilt.webp)](/post/brain-holograms-with-blender/quilt.webp)
 
 ## Looking towards a 3D future
 
