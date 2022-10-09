@@ -60,7 +60,9 @@ const isFirstPage = page.currentPage === 1
             <ul>
               {posts.map((post) => (
                 <li>
-                  <a href={post.url}>{post.frontmatter.title}</a>
+                  <a href={post.url} title={post.frontmatter.title}>
+                    {post.frontmatter.title}
+                  </a>
                   <time>{post.frontmatter.pubDate}</time>
                 </li>
               ))}
@@ -87,9 +89,17 @@ const isFirstPage = page.currentPage === 1
           margin-top: 3rem;
           line-height: 200%;
 
+          a {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-shrink: 1;
+          }
+
           time {
             color: #777;
+            margin-left: 1rem;
           }
+
           ul {
             padding: 0;
           }
@@ -98,6 +108,7 @@ const isFirstPage = page.currentPage === 1
             display: flex;
             justify-content: space-between;
             list-style-type: none;
+            white-space: nowrap;
           }
         }
       }
