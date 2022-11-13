@@ -28,6 +28,8 @@ Many months later, I met an [amazing team who specialize in Pulsatile Tinnitus a
 
 Since my situation is relatively rare, I wanted to take this opportunity to preserve my qualitative experience of these phantom sounds before they're (hopefully!) gone. I hope this can provide a data point for the kinds of sounds one can experience.
 
+[Update: My operation was a success and confirmed my DAVF diagnosis. I no longer hear my Pulsatile Tinnitus, and hopefully never will again.]
+
 ## What does my Pulsatile Tinnitus sound like?
 
 There's a broad variety of descriptions I've read online, ranging from hissing, gurgling, beeping, whooshing, to whining and whistling. What does a whistle sound like in this context? It's all very subjective, so having audio to listen to makes a huge difference. Some folks have been able to create [recordings of their Pulsatile Tinnitus sounds](http://www.whooshers.com/whooshersounds.html). Mine were not detectable via stethoscope.
