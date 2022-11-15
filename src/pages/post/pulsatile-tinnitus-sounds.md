@@ -18,17 +18,13 @@ Here's what it sounded like: (🎧 headphones recommended!)
 
 Later that night, I put in earplugs and noted that the sound was still there. After curious [googling](https://www.google.com/search?q=hearing+heartbeat+in+ear), I learned this is called [Pulsatile Tinnitus](https://en.wikipedia.org/wiki/Tinnitus#Pulsatile_tinnitus), and found the delightfully named [whooshers.com](http://www.whooshers.com).
 
----
-
-**Note: what follows is my personal story, not medical advice.** Keep in mind there's a wide variety of kinds and causes of Pulsatile Tinnitus. If you or someone you know is hearing unexpected noises, consult a doctor (I started with my GP).
-
----
+<aside><b>Note: what follows is my personal story, not medical advice.</b> Keep in mind there's a wide variety of kinds and causes of Pulsatile Tinnitus. If you or someone you know is hearing unexpected noises, consult a doctor (I started with my GP).</aside>
 
 Many months later, I met an [amazing team who specialize in Pulsatile Tinnitus at UCSF](https://www.ucsfhealth.org/clinics/pulsatile-tinnitus-clinic), where I was diagnosed with a likely [DAVF](http://neuroangio.org/patient-information/patient-information-brain-dural-fistula). If you look closely, you might be able to spot it in these [holographic explorations of my MRI scans](/post/brain-holograms-with-blender). I'm very lucky that these sounds have been my only symptom, and I'm scheduled for an operation which could fix the underlying cause.
 
 Since my situation is relatively rare, I wanted to take this opportunity to preserve my qualitative experience of these phantom sounds before they're (hopefully!) gone. I hope this can provide a data point for the kinds of sounds one can experience.
 
-[Update: My operation was a success and confirmed my DAVF diagnosis. I no longer hear my Pulsatile Tinnitus, and hopefully never will again.]
+<aside><b>Update:</b> My operation was a success and confirmed my DAVF diagnosis. I no longer hear my Pulsatile Tinnitus, and hopefully never will again.</aside>
 
 ## What does my Pulsatile Tinnitus sound like?
 
