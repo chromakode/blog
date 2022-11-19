@@ -86,17 +86,23 @@ const today = new Date()
     margin-left: 0.25rem;
   }
 
-  .social a {
-    display: inline-flex;
-    opacity: 0.75;
-    transition: opacity 150ms ease-out;
+  .social {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
 
-    &:not(:last-child) {
-      margin-right: 0.5rem;
-    }
+    a {
+      display: flex;
+      opacity: 0.75;
+      transition: opacity 150ms ease-out;
 
-    &:hover {
-      opacity: 1;
+      &:not(:last-child) {
+        margin-right: 0.5rem;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 </style>
