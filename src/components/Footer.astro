@@ -6,20 +6,32 @@ const today = new Date()
 
 <footer class="gray">
   <div class="inner">
-    <span
-      >Licensed under
-      <a
-        target="_blank"
-        href="https://github.com/chromakode/blog/blob/main/LICENSE"
-        >Creative Commons BY-SA 4.0</a
+    <div class="end-notes">
+      <span
+        >Licensed under
+        <a
+          target="_blank"
+          href="https://github.com/chromakode/blog/blob/main/LICENSE"
+          >Creative Commons BY-SA 4.0</a
+        >.
+      </span>
+      <a target="_blank" href="https://github.com/chromakode/blog"
+        >Source code</a
       >.
-    </span>
-    <div class="powered-by">
-      <span>Rendered by</span>
-      <a target="_blank" href="https://astro.build" class="astro-logo">
-        <img src="/static/astro.svg" width="22" height="22" alt="Astro" />
+      <span class="powered-by">
+        <span>Rendered by</span>
+        <a target="_blank" href="https://astro.build" class="astro-logo">
+          <img src="/static/astro.svg" width="22" height="22" alt="Astro" />
+        </a>.
+      </span>
+    </div>
+    <div class="social">
+      <a target="_blank" rel="me" href="https://github.com/chromakode">
+        <img src="/static/github.svg" width="22" height="22" alt="Github" />
       </a>
-      <a target="_blank" href="https://github.com/chromakode/blog">Source</a>
+      <a target="_blank" rel="me" href="https://mastodon.social/@chromakode">
+        <img src="/static/mastodon.svg" width="22" height="22" alt="Mastodon" />
+      </a>
     </div>
   </div>
   <ColorBar reversed />
@@ -51,18 +63,40 @@ const today = new Date()
     }
   }
 
+  a {
+    color: #333;
+  }
+
+  .end-notes {
+    display: flex;
+    align-items: center;
+
+    & > *:not(:first-child) {
+      margin-left: 0.5em;
+    }
+  }
+
   .powered-by {
     display: flex;
     align-items: center;
   }
 
-  a {
-    color: #333;
-  }
-
   .astro-logo {
     display: inline-flex;
     margin-left: 0.25rem;
-    margin-right: 0.5rem;
+  }
+
+  .social a {
+    display: inline-flex;
+    opacity: 0.75;
+    transition: opacity 150ms ease-out;
+
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
   }
 </style>
