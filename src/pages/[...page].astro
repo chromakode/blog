@@ -6,6 +6,8 @@ import Main from '../components/Main.astro'
 import Post, { getPosts } from '../components/Post.astro'
 import Footer from '../components/Footer.astro'
 import type { MarkdownInstance, Page } from 'astro'
+import PostList from '../components/PostList.astro'
+import Nav from '../components/Nav.astro'
 
 export async function getStaticPaths({ paginate }: { paginate: any }) {
   const posts = await getPosts()
@@ -41,7 +43,7 @@ const isFirstPage = page.currentPage === 1
         ))
       }
     </Main>
-    <nav>
+    <Nav>
       <div class="pages">
         <a
           href={page.url.prev || '/'}
@@ -54,63 +56,14 @@ const isFirstPage = page.currentPage === 1
           )
         }
       </div>
-      {
-        isFirstPage && (
-          <div class="index gray">
-            <ul>
-              {posts.map((post) => (
-                <li>
-                  <a href={post.url} title={post.frontmatter.title}>
-                    {post.frontmatter.title}
-                  </a>
-                  <time>{post.frontmatter.pubDate}</time>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )
-      }
-    </nav>
+      {isFirstPage && <PostList />}
+    </Nav>
     <Footer />
     <style lang="less">
-      nav {
-        width: 100%;
-        max-width: var(--content-max-width);
-        margin: 0 auto;
-        padding: 1rem;
-        box-sizing: border-box;
-
-        .pages {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .index {
-          margin-top: 3rem;
-          line-height: 200%;
-
-          a {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            flex-shrink: 1;
-          }
-
-          time {
-            color: #777;
-            margin-left: 1rem;
-          }
-
-          ul {
-            padding: 0;
-          }
-
-          li {
-            display: flex;
-            justify-content: space-between;
-            list-style-type: none;
-            white-space: nowrap;
-          }
-        }
+      .pages {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
       }
 
       a.disabled,

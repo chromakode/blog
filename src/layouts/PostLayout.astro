@@ -4,6 +4,8 @@ import Main from '../components/Main.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import Post from '../components/Post.astro'
+import PostList from '../components/PostList.astro'
+import Nav from '../components/Nav.astro'
 
 export interface Props {
   content: {
@@ -31,6 +33,9 @@ const {
     <Main>
       <Post url={url} pubDate={pubDate}><slot /></Post>
     </Main>
+    <Nav>
+      <PostList />
+    </Nav>
     <Footer />
   </body>
 </html>

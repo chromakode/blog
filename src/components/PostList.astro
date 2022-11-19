@@ -1,0 +1,49 @@
+---
+import { getPosts } from '../components/Post.astro'
+const posts = await getPosts()
+---
+
+<div class="index gray">
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={post.url} title={post.frontmatter.title}>
+            {post.frontmatter.title}
+          </a>
+          <time>{post.frontmatter.pubDate}</time>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+<style lang="less">
+  .index {
+    margin-top: 1rem;
+    padding-top: 1t rem;
+    border-top: 1px dashed gray;
+    line-height: 200%;
+
+    a {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-shrink: 1;
+    }
+
+    time {
+      color: #777;
+      margin-left: 1rem;
+    }
+
+    ul {
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      list-style-type: none;
+      white-space: nowrap;
+    }
+  }
+</style>
