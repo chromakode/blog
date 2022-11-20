@@ -15,9 +15,11 @@ const today = new Date()
           >Creative Commons BY-SA 4.0</a
         >.
       </span>
-      <a target="_blank" href="https://github.com/chromakode/blog"
-        >Source code</a
-      >.
+      <span
+        ><a target="_blank" href="https://github.com/chromakode/blog"
+          >Source code</a
+        >.</span
+      >
       <span class="powered-by">
         <span>Rendered by</span>
         <a target="_blank" href="https://astro.build" class="astro-logo">
@@ -70,9 +72,11 @@ const today = new Date()
   .end-notes {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    line-height: 200%;
 
-    & > *:not(:first-child) {
-      margin-left: 0.5em;
+    & > *:not(:last-child) {
+      margin-right: 0.5em;
     }
   }
 
