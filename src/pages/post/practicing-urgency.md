@@ -30,7 +30,7 @@ I was cured that day. When I put in earplugs, I found that the rhythmic pulsing 
 
 ![A photo of me in the ICU, smiling, after hearing silence for the first time in 8 months](/post/practicing-urgency/silence.jpg)
 
-The following morning, I learned my case had turned out to be higher risk than anticipated. With each pulse, blood was flowing backwards towards my brainstem. We were lucky to have caught it early and taken action before it could present dangerous symptoms.
+The following morning, I learned my case had turned out to be higher risk than anticipated. With each pulse, blood was flowing backwards towards my brainstem. We were lucky to have caught my DAVF early and taken action before it could present dangerous symptoms.
 
 What started as an innocuous rustling sound turned out to be the herald of a potentially life-threatening condition. I was in that tiny slice of the fraction of the percentage. But somehow, amazingly, I'd found a path through and had taken it.
 
