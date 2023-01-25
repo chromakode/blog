@@ -1,5 +1,7 @@
 ---
-import { getPosts } from '../components/Post.astro'
+import { getPosts, postURL } from '@content/posts'
+import PostDate from './PostDate.astro'
+
 const posts = await getPosts()
 ---
 
@@ -8,10 +10,10 @@ const posts = await getPosts()
     {
       posts.map((post) => (
         <li>
-          <a href={post.url} title={post.frontmatter.title}>
-            {post.frontmatter.title}
+          <a href={postURL(post.slug)} title={post.data.title}>
+            {post.data.title}
           </a>
-          <time>{post.frontmatter.pubDate}</time>
+          <PostDate date={post.data.pubDate} />
         </li>
       ))
     }

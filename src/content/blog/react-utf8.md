@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: A character encoding gotcha with React
 pubDate: January 12, 2015
 ---

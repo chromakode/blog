@@ -1,25 +1,26 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
-import BaseHead from '../components/BaseHead.astro'
-import Header from '../components/Header.astro'
-import Main from '../components/Main.astro'
-import Post, { getPosts } from '../components/Post.astro'
-import Footer from '../components/Footer.astro'
-import type { MarkdownInstance, Page } from 'astro'
-import PostList from '../components/PostList.astro'
-import Nav from '../components/Nav.astro'
+import type { GetStaticPathsOptions, Page } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+import { getPosts } from '@content/posts'
+import BaseHead from '@components/BaseHead.astro'
+import Header from '@components/Header.astro'
+import Main from '@components/Main.astro'
+import Post from '@components/Post.astro'
+import Footer from '@components/Footer.astro'
+import PostList from '@components/PostList.astro'
+import Nav from '@components/Nav.astro'
 
-export async function getStaticPaths({ paginate }: { paginate: any }) {
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = await getPosts()
   const pages = paginate(posts, { pageSize: 3 })
   return pages
 }
 
 export interface Props {
-  page: Page<MarkdownInstance<any>>
+  page: Page<CollectionEntry<'blog'>>
 }
 
-const posts = await getPosts()
 const { page } = Astro.props
 const isFirstPage = page.currentPage === 1
 ---
@@ -31,17 +32,8 @@ const isFirstPage = page.currentPage === 1
   </head>
   <body>
     <Header front={isFirstPage} />
-    <Main
-      >{
-        page.data.map(({ url, frontmatter: { pubDate }, compiledContent }) => (
-          <Post
-            url={url!}
-            pubDate={pubDate}
-            isListingPage
-            set:html={compiledContent()}
-          />
-        ))
-      }
+    <Main>
+      {page.data.map((post) => <Post post={post} isListingPage />)}
     </Main>
     <Nav>
       <div class="pages">

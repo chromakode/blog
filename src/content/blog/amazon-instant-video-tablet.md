@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: Running Amazon Instant Video on Android tablets
 pubDate: December 11, 2014
 ---

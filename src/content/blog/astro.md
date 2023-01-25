@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: First impressions using Astro
 pubDate: Sep 4, 2022
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: Fixing hanging deja-dup S3 uploads
 pubDate: July 9, 2014
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: Backing up 18 years in 8 hours
 pubDate: January 4, 2016
 ---

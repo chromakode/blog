@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: Isolated Core
 pubDate: February 2, 2016
 ---

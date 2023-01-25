@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: aptitude why
 pubDate: July 23, 2014
 ---

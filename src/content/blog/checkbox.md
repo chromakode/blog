@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: Checkbox
 pubDate: Apr 1, 2021
 ---

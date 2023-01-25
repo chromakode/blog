@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: Leaps
 pubDate: July 22, 2014
 ---

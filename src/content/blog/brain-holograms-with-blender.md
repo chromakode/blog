@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: Brain holograms with Blender and Looking Glass
 pubDate: Sep 5, 2022
 image: /post/brain-holograms-with-blender/quilt.png

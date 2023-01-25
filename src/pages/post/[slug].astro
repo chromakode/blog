@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getPosts } from '@content/posts'
+import Post from '@components/Post.astro'
+import BaseHead from '@components/BaseHead.astro'
+import Main from '@components/Main.astro'
+import Header from '@components/Header.astro'
+import Footer from '@components/Footer.astro'
+import PostList from '@components/PostList.astro'
+import Nav from '@components/Nav.astro'
+
+export async function getStaticPaths() {
+  const posts = await getPosts()
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }))
+}
+
+export interface Props {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props
+const {
+  data: { title, description, image },
+} = post
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+  </head>
+
+  <body>
+    <Header />
+    <Main>
+      <Post post={post} />
+    </Main>
+    <Nav>
+      <PostList />
+    </Nav>
+    <Footer />
+  </body>
+</html>

@@ -1,32 +1,30 @@
 ---
-export async function getPosts() {
-  return (await Astro.glob('../pages/post/*.md')).sort(
-    (a, b) =>
-      new Date(b.frontmatter.pubDate).valueOf() -
-      new Date(a.frontmatter.pubDate).valueOf(),
-  )
-}
+import type { CollectionEntry } from 'astro:content'
+import { postURL } from '../content/posts'
+import PostDate from './PostDate.astro'
+
 export interface Props {
-  url: string
-  pubDate?: string
+  post: CollectionEntry<'blog'>
   isListingPage?: boolean
 }
 
-const { url, pubDate, isListingPage } = Astro.props
-
-const urlParts = url.split('/')
-const slug = urlParts[urlParts.length - 1]
+const { post, isListingPage } = Astro.props
+const {
+  slug,
+  data: { pubDate },
+} = post
+const { Content } = await post.render()
 ---
 
 <article>
   <span class="breadcrumbs">
     {!isListingPage && <a href="/">chromakode</a>}
     /
-    <a href={url}>{slug}</a>
+    <a href={postURL(slug)}>{slug}</a>
   </span>
-  {pubDate && <time>{pubDate}</time>}
+  {pubDate && <PostDate date={pubDate} />}
   <div class="post">
-    <slot />
+    <Content />
   </div>
 </article>
 
@@ -121,7 +119,7 @@ const slug = urlParts[urlParts.length - 1]
     }
 
     :global(aside) {
-      padding: 0.66em .33em;
+      padding: 0.66em 0.33em;
       border: 1px dashed gray;
       border-left: none;
       border-right: none;

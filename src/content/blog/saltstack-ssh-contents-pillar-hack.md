@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: A hacky workaround for empty contents_pillar in salt-ssh
 pubDate: July 9, 2014
 ---

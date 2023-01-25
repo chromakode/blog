@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: Downloading an image of a Linode drive
 pubDate: July 9, 2014
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: Fun with the Myo gesture controller
 pubDate: December 30, 2014
 ---

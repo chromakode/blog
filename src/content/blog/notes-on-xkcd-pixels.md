@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: Notes from the development of xkcd's "Pixels"
 pubDate: September 6, 2014
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: Slow news
 pubDate: September 27, 2017
 ---
