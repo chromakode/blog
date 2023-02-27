@@ -52,7 +52,7 @@ Why have products like Google Home plateaued, while Home Assistant has taken off
 
 ## The web is good enough
 
-Future apps are not installed individually on each device. Apps are becoming services you interact with across _all_ your devices. Self-hosted web apps are uniquely well positioned for this, though there's still a few pieces missing (particularly discovery of available local web-apps).
+The future of apps will not be installed individually on each device. Apps are becoming services you interact with across _all_ your devices. Self-hosted web apps are uniquely well positioned for this, though there's still a few pieces missing (particularly discovery of available local web-apps).
 
 [Progressive Web Apps](https://web.dev/progressive-web-apps) have been around for a while, but have never had their day in the sun. One reason was the lack of [push notifications on Mobile Safari](https://webkit.org/blog/13877/web-push-for-web-apps-on-ios-and-ipados), which was recently announced to be added in iOS 16.4. It's no coincidence that the apps I listed above are all PWAs: the web is easiest to develop for, works everywhere, and has the largest pool of developers.
 
