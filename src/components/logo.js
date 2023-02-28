@@ -167,6 +167,7 @@ function cubeSpinner() {
     )
     cubesScene.camera.reset().scale(scaling)
     logoScene.camera.reset().scale(scaling)
+    context.render()
   }
   resize()
   window.addEventListener('resize', resize, false)
