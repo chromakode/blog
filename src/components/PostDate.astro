@@ -14,3 +14,10 @@ const { date } = Astro.props
 <time datetime={date.toISOString().split('T')[0]}>
   {dateFormatter.format(date)}
 </time>
+
+<style>
+  time {
+    white-space: nowrap;
+    margin-right: 1em;
+  }
+</style>
