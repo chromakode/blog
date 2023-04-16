@@ -1,4 +1,12 @@
-<main>
+---
+export interface Props {
+  centered?: boolean
+}
+
+const { centered } = Astro.props
+---
+
+<main class:list={{ centered }}>
   <slot />
 </main>
 
@@ -10,5 +18,11 @@
     margin: 3rem auto 1rem;
     padding: 1rem;
     box-sizing: border-box;
+  }
+
+  main.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>

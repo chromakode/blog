@@ -5,9 +5,10 @@ import ColorBar from './ColorBar.astro'
 
 export interface Props {
   front?: boolean
+  fullscreen?: boolean
 }
 
-const { front } = Astro.props
+const { front, fullscreen } = Astro.props
 ---
 
 {
@@ -25,7 +26,7 @@ const { front } = Astro.props
   )
 }
 <ColorBar sticky />
-<a id="side-logo" class:list={{ front }} href="/" title="Home"></a>
+<a id="side-logo" class:list={{ front, fullscreen }} href="/" title="Home"></a>
 
 <style lang="less">
   header {
@@ -106,7 +107,7 @@ const { front } = Astro.props
   }
 
   @media (max-width: 900px) {
-    #side-logo {
+    #side-logo:not(.fullscreen) {
       left: auto;
       top: auto;
       right: 6px;

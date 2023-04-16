@@ -1,0 +1,46 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+import BaseHead from '@components/BaseHead.astro'
+import Header from '@components/Header.astro'
+import Main from '@components/Main.astro'
+import Post from '@components/Post.astro'
+import Footer from '@components/Footer.astro'
+import PostList from '@components/PostList.astro'
+import Nav from '@components/Nav.astro'
+import ColorBar from '@components/ColorBar.astro'
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header fullscreen />
+    <Main centered>
+      <div class="inner">
+        <h1>404</h1>
+        <h2>Not found.</h2>
+      </div>
+    </Main>
+    <Footer />
+    <style>
+      .inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        font-family: 'Lato', sans-serif;
+        font-size: 5em;
+        margin: 0;
+      }
+
+      h2 {
+        margin: 0;
+        color: gray;
+      }
+    </style>
+  </body>
+</html>
