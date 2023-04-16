@@ -74,6 +74,7 @@ const today = new Date()
     align-items: center;
     flex-wrap: wrap;
     line-height: 200%;
+    margin-right: 0.75rem;
 
     & > *:not(:last-child) {
       margin-right: 0.5em;
@@ -93,6 +94,7 @@ const today = new Date()
   .social {
     display: flex;
     align-items: center;
+    min-width: 6rem;
     margin-bottom: 0.25rem;
 
     a {
@@ -107,6 +109,12 @@ const today = new Date()
       &:hover {
         opacity: 1;
       }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .inner {
+      justify-content: flex-start;
     }
   }
 </style>
