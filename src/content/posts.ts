@@ -6,6 +6,12 @@ export async function getPosts() {
   )
 }
 
+export async function getFeaturedPosts() {
+  return (await getPosts()).filter(
+    (p) => p.data.feature && p.data.image && p.data.description,
+  )
+}
+
 export function postURL(slug: string) {
   return `/post/${slug}`
 }

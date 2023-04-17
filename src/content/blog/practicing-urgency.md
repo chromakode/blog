@@ -2,7 +2,8 @@
 title: Practicing urgency
 description: This year, a health scare reordered my priorities. Here's what it taught me about how to make the most of my time.
 pubDate: Nov 27, 2022
-image: /post/practicing-urgency/sunset.jpg
+image: ../../../public/post/practicing-urgency/sunset.jpg
+feature: true
 ---
 
 # Practicing urgency

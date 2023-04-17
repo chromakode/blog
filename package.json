@@ -14,8 +14,9 @@
     "@astrojs/rss": "^2.1.0",
     "@astrojs/sitemap": "^1.0.0",
     "@fontsource/lato": "^4.5.10",
-    "astro": "^2.0.1",
-    "seen": "^0.2.7"
+    "astro": "^2.3.0",
+    "seen": "^0.2.7",
+    "sharp": "^0.31.3"
   },
   "devDependencies": {
     "@netlify/functions": "^1.4.0",

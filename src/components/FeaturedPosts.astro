@@ -1,0 +1,100 @@
+---
+import { Image } from 'astro:assets'
+import { getFeaturedPosts, postURL } from '@content/posts'
+
+const featuredPosts = await getFeaturedPosts()
+---
+
+<ul>
+  {
+    featuredPosts.slice(0, 3).map((post) => (
+      <li class="featured-post">
+        <a href={postURL(post.slug)} title={post.data.title}>
+          <Image src={post.data.image!} height={400} format="webp" alt="" />
+          <div class="info">
+            <div class="title">{post.data.title}</div>
+            <div class="description">{post.data.description}</div>
+          </div>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    margin-bottom: 3rem;
+  }
+
+  .featured-post {
+    display: flex;
+    height: 9rem;
+    list-style-type: none;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0.05rem 0.25rem rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .featured-post a {
+    display: flex;
+    text-decoration: none;
+    color: black;
+  }
+
+  .info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 1.75rem;
+    overflow: hidden;
+  }
+
+  .featured-post img {
+    width: auto;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .title {
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  .description {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  @media (max-width: 900px) {
+    ul {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .featured-post img {
+      width: 40%;
+    }
+
+    .info {
+      margin: 0 3%;
+    }
+
+    .title,
+    .description {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+</style>
