@@ -7,3 +7,8 @@
   from = "/shape/*"
   to = "https://chromakode-reshape.netlify.app/:splat"
   status = 200
+
+[[redirects]]
+  from = "/shape/page/*"
+  to = "/shape/:splat"
+  status = 301
