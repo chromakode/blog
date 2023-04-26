@@ -8,8 +8,8 @@ export default defineConfig({
   experimental: {
     assets: true,
   },
-    image: {
-    service: "astro/assets/services/sharp",
+  image: {
+    service: 'astro/assets/services/sharp',
   },
   site: 'https://chromakode.com',
   integrations: [mdx(), sitemap(), compress()],
