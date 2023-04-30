@@ -7,9 +7,9 @@ export async function getPosts() {
 }
 
 export async function getFeaturedPosts() {
-  return (await getPosts()).filter(
-    (p) => p.data.feature && p.data.image && p.data.description,
-  )
+  return (await getPosts())
+    .slice(1)
+    .filter((p) => p.data.feature && p.data.image && p.data.description)
 }
 
 export function postURL(slug: string) {
