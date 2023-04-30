@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.15.2",
+    "@astrojs/preact": "^2.1.0",
     "@astrojs/rss": "^2.1.0",
     "@astrojs/sitemap": "^1.0.0",
     "@fontsource/lato": "^4.5.10",
     "astro": "^2.3.0",
+    "preact": "^10.13.2",
     "seen": "^0.2.7",
     "sharp": "^0.31.3"
   },

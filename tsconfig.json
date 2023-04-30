@@ -4,7 +4,10 @@
     "baseUrl": ".",
     "paths": {
       "@content/*": ["src/content/*"],
-      "@components/*": ["src/components/*"]
-    }
+      "@components/*": ["src/components/*"],
+      "@public/*": ["public/*"]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
 }
