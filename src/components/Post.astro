@@ -61,6 +61,7 @@ const { Content } = await post.render()
     :global(img),
     :global(video) {
       width: 100%;
+      height: auto;
     }
 
     :global(img.tall) {
@@ -69,6 +70,23 @@ const { Content } = await post.render()
       width: auto;
       max-height: 25em;
       max-width: 100%;
+    }
+
+    :global(img.flip-y) {
+      transform: scaleY(-1);
+    }
+
+    :global(.grid-4) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      margin: 1.5em 0;
+    }
+
+    :global(.wide) {
+      @media (min-width: 920px) {
+        width: 130%;
+        margin-left: -15%;
+      }
     }
 
     :global(time) {

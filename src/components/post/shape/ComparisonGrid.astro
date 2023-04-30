@@ -1,0 +1,22 @@
+---
+import { getImage } from 'astro:assets'
+import ABImageGrid, { type ABs } from './ABImageGrid'
+
+const shapes = [2, 26, 37, 44, 80, 100, 110, 129]
+
+const abs: ABs = []
+
+for (const shape of shapes) {
+  const { default: aImg } = await import(
+    `../../../../public/post/shape/${shape}-original.png`
+  )
+  const { default: bImg } = await import(
+    `../../../../public/post/shape/${shape}-rerendered.png`
+  )
+  const { src: a } = await getImage({ src: aImg, width: 500 })
+  const { src: b } = await getImage({ src: bImg, width: 500 })
+  abs.push({ a, b })
+}
+---
+
+<ABImageGrid client:idle abs={abs} width={500} />
