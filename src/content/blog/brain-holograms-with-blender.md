@@ -8,7 +8,7 @@ feature: true
 
 # Brain holograms with Blender and Looking Glass
 
-<video muted autoplay loop controls class="pingpong" src="/post/brain-holograms-with-blender/hologram.mp4" style="width: 100%; height: auto"></video>
+<video muted playsinline autoplay loop controls class="pingpong" src="/post/brain-holograms-with-blender/hologram.mp4" style="width: 100%; height: auto"></video>
 
 Getting a cranial MRI has been on my bucket list since I was a young kid -- probably inspired by watching PBS science specials. This summer, out of necessity, my opportunity came knocking.
 
