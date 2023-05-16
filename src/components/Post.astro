@@ -76,10 +76,39 @@ const { Content } = await post.render()
       transform: scaleY(-1);
     }
 
-    :global(.grid-4) {
+    :global(.bg-black img, .bg-black video) {
+      background: black;
+    }
+
+    :global(.outline-2 img, .outline-2 video) {
+      outline: 2px solid black;
+    }
+
+    :global(.outline-1 img, .outline-1 video) {
+      outline: 1px solid black;
+    }
+
+    :global(.grid) {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
       margin: 1.5em 0;
+
+      :global(p) {
+        margin: 0;
+      }
+    }
+
+    :global(.grid-2) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    :global(.grid-4) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    :global(.grid-collapse-col) {
+      @media (max-width: 720px) {
+        grid-template-columns: 1fr;
+      }
     }
 
     :global(.wide) {

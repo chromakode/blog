@@ -21,7 +21,7 @@ export default function ABImageGrid({
   }, [])
 
   return (
-    <div class="wide grid-4" style="gap: 10px">
+    <div class="wide grid grid-4" style="gap: 10px">
       {abs.map(({ a, b }) => (
         <img
           src={isShowingB ? b : a}
