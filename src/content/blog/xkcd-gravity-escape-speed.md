@@ -30,12 +30,12 @@ When we made [Hoverboard](https://xkcd.com/1608) in 2015, Randall made a clever 
 
 <div class="grid grid-2 grid-collapse-col outline-2 bg-black wide" style="gap: 8px">
 
-<video muted autoplay loop>
+<video muted playsinline autoplay loop>
   <source type="video/webm" src="/post/xkcd-gravity-escape-speed/hoverboard-collision.webm">
   <source type="video/mp4"  src="/post/xkcd-gravity-escape-speed/hoverboard-collision.mp4">
 </video>
 
-<video muted autoplay loop>
+<video muted playsinline autoplay loop>
   <source type="video/webm" src="/post/xkcd-gravity-escape-speed/shield-collision.webm">
   <source type="video/mp4" src="/post/xkcd-gravity-escape-speed/shield-collision.mp4">
 </video>
@@ -69,7 +69,7 @@ We knew that guiding players towards interesting places would be a core design p
 
 <div class="outline-2 bg-black" style="gap: 8px">
 
-<video muted autoplay loop>
+<video muted playsinline autoplay loop>
   <source type="video/webm" src="/post/xkcd-gravity-escape-speed/space-navigation-zoom.webm">
   <source type="video/mp4" src="/post/xkcd-gravity-escape-speed/space-navigation-zoom.mp4">
 </video>
