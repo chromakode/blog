@@ -5,12 +5,6 @@ import preact from '@astrojs/preact'
 
 // https://astro.build/config
 export default defineConfig({
-  experimental: {
-    assets: true,
-  },
-  image: {
-    service: 'astro/assets/services/sharp',
-  },
   site: 'https://chromakode.com',
   integrations: [mdx(), sitemap(), preact()],
   markdown: {
