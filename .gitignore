@@ -19,3 +19,8 @@ pnpm-debug.log*
 
 # astro content collection metadata
 .astro
+
+# netlify local function builds
+.netlify
+
+drafts/
