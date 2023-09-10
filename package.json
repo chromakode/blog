@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@netlify/functions": "^2.0.2",
-    "@types/seen": "^0.2.1",
     "less": "^4.2.0",
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.0"

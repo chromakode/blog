@@ -2,6 +2,8 @@
 import '@fontsource/lato/400.css'
 import '@fontsource/lato/900.css'
 import ColorBar from './ColorBar.astro'
+import HeroLogo from './HeroLogo'
+import SideLogo from './SideLogo'
 
 export interface Props {
   front?: boolean
@@ -15,7 +17,7 @@ const { front, fullscreen } = Astro.props
   front && (
     <header>
       <div id="spinner" aria-hidden="true">
-        <canvas id="logo" />
+        <HeroLogo client:load client:only="preact" />
       </div>
       <div class="heading">
         <h1>Hey, I'm Max.</h1>
@@ -26,7 +28,11 @@ const { front, fullscreen } = Astro.props
   )
 }
 <ColorBar sticky />
-<a id="side-logo" class:list={{ front, fullscreen }} href="/" title="Home"></a>
+<a id="side-logo" class:list={{ front, fullscreen }} href="/" title="Home">
+  <SideLogo client:load client:only="preact" />
+</a>
+
+<script src="./scripts/viewport.ts"></script>
 
 <style lang="less">
   header {
@@ -37,7 +43,6 @@ const { front, fullscreen } = Astro.props
     overflow: hidden;
     font-size: 1vmin;
     background: white;
-    position: relative;
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100 - var(--color-bar-height));
     width: 100%;
@@ -70,41 +75,40 @@ const { front, fullscreen } = Astro.props
   }
 
   #spinner {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    max-width: 900px;
-    height: 75vh;
-    text-align: left;
+    min-height: 0;
+    flex: 4;
 
     &:active {
       cursor: move;
     }
-  }
 
-  #logo {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    :global(canvas) {
+      height: min(100%, 100vw);
+      aspect-ratio: 1 / 1;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
   }
 
   #side-logo {
-    display: block;
+    display: flex;
     position: fixed;
     width: 52px;
     height: 52px;
     left: 20px;
     top: 32px;
-    transition: opacity 0.5s ease;
     z-index: 10;
-  }
 
-  #side-logo.front {
-    opacity: 0;
+    :global(canvas) {
+      width: 100%;
+      height: 100%;
+      transition: opacity 0.5s ease;
+      opacity: 0;
+    }
   }
 
   @media (max-width: 900px) {
@@ -136,11 +140,4 @@ const { front, fullscreen } = Astro.props
       opacity: 0;
     }
   }
-
-  body.below-fold {
-    #side-logo {
-      opacity: 1;
-    }
-  }
 </style>
-<script src="./logo.js"></script>
