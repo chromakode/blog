@@ -2,6 +2,9 @@
 title: Notes from the development of xkcd's "Pixels"
 pubDate: September 6, 2014
 ---
+import { Image } from 'astro:assets'
+
+import cornerCaseImg from './images/notes-on-xkcd-pixels/corner-case.png'
 
 Over the years, I've had the pleasure of hacking on the frontend code for a bunch of [xkcd](http://xkcd.com)'s interactive comics, including: [unixkcd](http://uni.xkcd.com/), [xk3d](http://3d.xkcd.com/), [Umwelt](http://xkcd.com/1037/), [Time](http://xkcd.com/1190/), [Externalities](http://xkcd.com/1193/), and [Lorenz](http://xkcd.com/1350/). This weekend, I was pinged about making something to coincide with the release of _[What If?: Serious Scientific Answers to Absurd Hypothetical Questions](http://whatif.xkcd.com/book/)_. The process of building ["Pixels"](http://xkcd.com/1416/) was even crazier than our usual April Fools rush, and had the extra intrigue of being live during [Randall Munroe's Colbert Report interview](http://thecolbertreport.cc.com/guests/randall-munroe).
 
@@ -15,7 +18,7 @@ _Pixels_ is an infinitely zoomable black-and-white comic. As you zoom in, the pi
 
 [view the source code on GitHub](https://github.com/chromakode/xkcd-pixels)
 
-[![A couple sample zooms from Pixels](/post/notes-on-xkcd-pixels/pixels-zoom.png)](http://xkcd.com/1416/)
+[![A couple sample zooms from Pixels](./images/notes-on-xkcd-pixels/pixels-zoom.png)](http://xkcd.com/1416/)
 
 Our schedule for the project was pretty absurd: we had 3 days from the first discussions on Saturday to going live Tuesday night. I was traveling between 3 different states during those days. With this crazy schedule, there was very little margin for error or engineering setbacks. I ended up sleeping for a total of 1 hour between Monday and Tuesday, finishing the zooming code on a plane flight home to SF via [Gogo Inflight Internet](http://www.gogoair.com). My plane landed in SFO a half hour before our rough goal of launching midnight EST. While my cab was hurtling me home at 80mph, the folks at xkcd were putting the final touches on the art and server code. We cobbled it all together over IRC and went live at around 1:30am EST.
 
@@ -36,7 +39,7 @@ To represent your position within the comic, it would be convenient to store the
 
 Here's a couple examples:
 
-![Sample zooms labeled with pos and offset values](/post/notes-on-xkcd-pixels/pixels-pos-offset.png)
+![Sample zooms labeled with pos and offset values](./images/notes-on-xkcd-pixels/pixels-pos-offset.png)
 
 To render the comic, we locate the `Turtle` that accords to `pos` and draw the pixels described in its 2d array, offset spatially by the values of `offset`. As you scroll deeper, `pos` becomes a long array of the nested pixels you've entered, like `[[305, 222], [234, 674], [133, 733], ...]`. When you zoom far enough to view the pixels of a panel for the first time, the image data is read using a hidden Canvas element, and a new `Turtle` object is generated with the panel ids for each pixel.
 
@@ -50,7 +53,7 @@ Working out the browser and math kinks to simply position and draw a single `Tur
 
 I then realized a problem with that thinking: if you zoom into a corner, you can go past 100% scale with up to 4 different panels onscreen:
 
-<img class="tall" src="/post/notes-on-xkcd-pixels/corner-case.png" alt="Zooming on a corner in Pixels" />
+<Image class="tall" src={cornerCaseImg} alt="Zooming on a corner in Pixels" />
 
 This thought led me to make the worst design decision of the project.
 

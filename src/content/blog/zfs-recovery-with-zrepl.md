@@ -1,7 +1,7 @@
 ---
 title: Disaster recovery with ZFS and zrepl
 pubDate: Aug 27, 2023
-image: ../../../public/post/zfs-recovery-with-zrepl/no-boot-device.jpg
+image: ./images/zfs-recovery-with-zrepl/no-boot-device.jpg
 imageAlt: 'A laptop with a blue BIOS screen reading: Default Boot Device Missing or Boot Failed. The photographer is making a silly surprised face in the screen reflection.'
 description: My SSD suddenly died. I only lost 10 minutes of data, thanks to ZFS and zrepl.
 ---
@@ -26,7 +26,7 @@ To automate taking snapshots and sending them to my NAS, I’m using a really co
 
 Since the snapshots are incremental, this is fine to run in the background on my home network to keep the replica up to date. The last run took 14 seconds to transfer and sent about 64 MiB.
 
-![Screenshot of a terminal running the zrepl status screen, showing a finished replication run with a full progress bar and a list of datasets replicated, all marked done.](/post/zfs-recovery-with-zrepl/zrepl.png)
+![Screenshot of a terminal running the zrepl status screen, showing a finished replication run with a full progress bar and a list of datasets replicated, all marked done.](./images/zfs-recovery-with-zrepl/zrepl.png)
 
 
 ## Restoring from ZFS snapshots
@@ -56,4 +56,4 @@ This is the first time I can recall losing an SSD in over 15 years of using them
 
 If you're curious, the offending drive was a WD_BLACK SN850 from my original Framework order. I’d heard unsettling stories on the Framework forums of this drive spontaneously dying or becoming unbootable. I guess it was my turn to roll some unlucky numbers.
 
-![A photo of the SN850 which failed after less than 2 years.](/post/zfs-recovery-with-zrepl/dead-sn850.jpg)
+![A photo of the SN850 which failed after less than 2 years.](./images/zfs-recovery-with-zrepl/dead-sn850.jpg)

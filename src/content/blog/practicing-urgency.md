@@ -2,7 +2,7 @@
 title: Practicing urgency
 description: This year, a health scare reordered my priorities. Here's what it taught me about how to make the most of my time.
 pubDate: Nov 27, 2022
-image: ../../../public/post/practicing-urgency/sunset.jpg
+image: ./images/practicing-urgency/sunset.jpg
 imageAlt: Sunset from Japantown, San Francisco, on October 3rd 2022
 feature: true
 ---
@@ -25,7 +25,7 @@ We decided, with the help of the incredible team at UCSF, that it was worth it f
 
 I was cured that day. When I put in earplugs, I found that the rhythmic pulsing I'd heard constantly for the last 8 months was gone. Pure joy.
 
-![A photo of me in the ICU, smiling, after hearing silence for the first time in 8 months](/post/practicing-urgency/silence.jpg)
+![A photo of me in the ICU, smiling, after hearing silence for the first time in 8 months](./images/practicing-urgency/silence.jpg)
 
 The following morning, I learned my case had turned out to be higher risk than anticipated. With each pulse, blood was flowing backwards towards my brainstem. We were lucky to have caught my DAVF early and taken action before it could present dangerous symptoms.
 
@@ -79,4 +79,4 @@ I love what I'm doing. I'm excited about my future. All I wished for was more ti
 
 It looks like I got my wish, and I'm not going to waste it.
 
-![A selfie a week after my operation](/post/practicing-urgency/selfie.jpg)
+![A selfie a week after my operation](./images/practicing-urgency/selfie.jpg)

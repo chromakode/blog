@@ -8,10 +8,10 @@ const abs: ABs = []
 
 for (const shape of shapes) {
   const { default: aImg } = await import(
-    `../../../../public/post/shape/${shape}-original.png`
+    `../../../content/blog/images/shape/${shape}-original.png`
   )
   const { default: bImg } = await import(
-    `../../../../public/post/shape/${shape}-rerendered.png`
+    `../../../content/blog/images/shape/${shape}-rerendered.png`
   )
   const { src: a } = await getImage({ src: aImg, width: 500 })
   const { src: b } = await getImage({ src: bImg, width: 500 })

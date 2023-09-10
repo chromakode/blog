@@ -2,7 +2,7 @@
 title: Synthesizing what my Pulsatile Tinnitus sounds like
 description: In February 2022, I began to hear my heartbeat and other phantom sounds, symptoms of a rare circulatory problem. Using synthesizers, I've recreated what they sound like.
 pubDate: Sep 27, 2022
-image: ../../../public/post/pulsatile-tinnitus-sounds/whistle.png
+image: ./images/pulsatile-tinnitus-sounds/whistle.png
 contentImage:
 feature: true
 ---

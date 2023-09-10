@@ -1,7 +1,7 @@
 ---
 title: Development notes from xkcd's "Gravity" and "Escape Speed"
 pubDate: May 15, 2023
-image: ../../../public/post/xkcd-gravity-escape-speed/escape-speed.png
+image: ./images/xkcd-gravity-escape-speed/escape-speed.png
 imageAlt: 'A screenshot of the "Escape Speed" game, featuring a small spaceship moving past a sign saying "Welcome to Origin!", with red debug lines overlayed'
 description: This was one of the most ambitious -- and most delayed -- April Fools comics we've ever shipped.
 feature: true
@@ -50,7 +50,7 @@ I also think it's kinda weird to have this indestructible ship which bounces ela
 so, I had an idea, a wonderfully stupid hoverboard level idea
 we give the ship a shield.
 what if we drew a circle around the ship whenever there's collision contact around a fixed radius
-suddenly all sorts of awkward collision or navigation problems disappear, AND it explains why this ship don't blow up](../../../public/post/xkcd-gravity-escape-speed/collision-chat.png)
+suddenly all sorts of awkward collision or navigation problems disappear, AND it explains why this ship don't blow up](./images/xkcd-gravity-escape-speed/collision-chat.png)
 
 It's almost always a win to simplify the requirements. I love when a simplification is both clearer to understand and easier to implement. The shield is cheesy, but it works!
 
@@ -60,7 +60,7 @@ Space is vast and mostly empty. Unlike hoverboard, where basic movement leads yo
 
 ![reddit comments on Escape Speed:
 Varandru: "I've heard somewhere that space travel somehow hits on both agoraphobia and claustrophobia simultaneously. Which is a neat fact if you're not travelling in space..."
-bryancrain88: "This game gave me a greater fear of space than anything I've read or seen. The visceral sense of how easy it is to get lost in it."](../../../public/post/xkcd-gravity-escape-speed/reddit-comments.png)
+bryancrain88: "This game gave me a greater fear of space than anything I've read or seen. The visceral sense of how easy it is to get lost in it."](./images/xkcd-gravity-escape-speed/reddit-comments.png)
 
 We knew that guiding players towards interesting places would be a core design problem. One of Randall's ideas was to have a "compass" pointing towards the nearest point of interest. This evolved into a cloud of dots around the ship with subtle cues for object distance and size:
 
@@ -85,13 +85,13 @@ Typically we've hidden collision data in the [least significant bit (LSB)](https
 
 This was the approach we used for Hoverboard and Gravity. For each frame, we render the vicinity around the player to an offscreen canvas and check the LSB values for passability (e.g. even&nbsp;=&nbsp;solid, odd&nbsp;=&nbsp;passable). You can run `ze.goggles()` in the JS console to see this hidden collision canvas (with some debug overlays added).
 
-![Screenshot of Hoverboard with the collision canvas debug view visible](../../../public/post/xkcd-gravity-escape-speed/hoverboard-collision-goggles.png)
+![Screenshot of Hoverboard with the collision canvas debug view visible](./images/xkcd-gravity-escape-speed/hoverboard-collision-goggles.png)
 
 This works reasonably well, but you have to be careful around antialiasing. Since resizing adds interpolated grayscale values to the image, this can add unintended LSB values to the images.
 
 Hoverboard used a hack which only considered dark pixels (channel value < 100) for the LSB checks. For Gravity, we wanted both light and dark passable areas, so davean wrote a custom image resizer to preserve the LSB values.
 
-![Crop of the Gravity sun source file from Gravity with passable pixels colored red](../../../public/post/xkcd-gravity-escape-speed/sun-collision-red.png)
+![Crop of the Gravity sun source file from Gravity with passable pixels colored red](./images/xkcd-gravity-escape-speed/sun-collision-red.png)
 
 We also started using transparency in the images so we could have multiple overlapped layers with a moving starfield background. While sound in theory, adding alpha caused a lot of pain. We kept finding areas with phantom collidability which didn't appear in the source images. After hours of tedious debugging and pixel peeping, I discovered that canvas uses [premultiplied alpha](https://en.wikipedia.org/wiki/Premultiplied_alpha) in the backing store. This [can cause values in the canvas to mismatch what was written](https://stackoverflow.com/q/23497925).
 
@@ -117,7 +117,7 @@ What if we could remap the color channels using CSS? It turns out this is possib
 
 Here's what the image data looks like with these color mappings:
 
-![Crop of the sun source file from Escape Speed colored blue and pink, and impassible elements colored white](../../../public/post/xkcd-gravity-escape-speed/sun-collision-channels.png)
+![Crop of the sun source file from Escape Speed colored blue and pink, and impassible elements colored white](./images/xkcd-gravity-escape-speed/sun-collision-channels.png)
 
 This was a fantastic solution. It worked nicely during early development. Unfortunately once we tested more, we discovered [SVG filters are unusably slow in Safari](https://stackoverflow.com/questions/53145883/how-to-use-a-simple-svg-filter-on-safari-with-acceptable-performance-and-without). :(
 
@@ -132,7 +132,7 @@ which direction did you want the LSB?
 chromakode: lol plz no
 davean: Already done and pushed
 chromakode: are we even using black
-davean: I don't even know what that means anymore](../../../public/post/xkcd-gravity-escape-speed/channels-chat.png)
+davean: I don't even know what that means anymore](./images/xkcd-gravity-escape-speed/channels-chat.png)
 
 It was March 29th, and at this point we wanted whatever was most likely to work. Elegance be damned. We switched to what we'd been avoiding the whole time: separate collision map images. This doubled the images downloaded, but it wasn't too bad: the monochrome images compress well and HTTP/2 or QUIC make it less of a perf hit than in our early 2010s tiled games.
 
@@ -146,7 +146,7 @@ As our games have grown in complexity, so have the accompanying datasets:
 
 <div class="outline-1 wide">
 
-![A screenshot of the editor for Escape Speed, with a game preview on the left with menus for customizing parameters, and a code editor on the right](../../../public/post/xkcd-gravity-escape-speed/geoverse-editor.png)
+![A screenshot of the editor for Escape Speed, with a game preview on the left with menus for customizing parameters, and a code editor on the right](./images/xkcd-gravity-escape-speed/geoverse-editor.png)
 
 </div>
 
@@ -188,7 +188,7 @@ Off-panel voice: OK, what's the bug?
 [Back to a view similar to the first panel where Cueball has turned towards the computer and points at the screen with one hand.]
 Cueball (edited from the original comic with a screenshot of a Slack message): ok so why did gravity change?
 Off-panel voice: I'll get the lighter fluid.
-](../../../public/post/xkcd-gravity-escape-speed/new-bug.png)
+](./images/xkcd-gravity-escape-speed/new-bug.png)
 
 I consulted davean's deep knowledge of game programming techniques. We walked through the code together over Discord. Neither of us could spot an obvious problem with the formulae until we started stepping through the physics state tick by tick. At last, we spotted a deeper problem!
 
