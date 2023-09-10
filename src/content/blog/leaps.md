@@ -3,8 +3,6 @@ title: Leaps
 pubDate: July 22, 2014
 ---
 
-# Leaps
-
 There's a lesson I seem to repeatedly forget, applicable to both life and design, in the nature of leaps forward. By "leap" here, I refer to an evolutionary change in the quality of an experience or approach which simultaneously solves many problems at once. The big "ah-has" that transform entire problem spaces and change the ways we think about possibilities.
 
 A leap typically has the ability to take things we _knew_ would be good, but opens them up in ways we couldn't imagine before. For example, the potential of smartphones was long known before they became widely available. Authors and researchers imagined the possibilities of portable computers and ubiquitous connectivity decades before they became everyday utilities. Sci-Fi predicted things like the internet, Google, widespread social networking, and cryptocurrency. However, what it didn't predict is the things that come _after_. The results of the leap.

@@ -2,13 +2,10 @@
 title: Development notes from xkcd's "Gravity" and "Escape Speed"
 pubDate: May 15, 2023
 image: ../../../public/post/xkcd-gravity-escape-speed/escape-speed.png
+imageAlt: 'A screenshot of the "Escape Speed" game, featuring a small spaceship moving past a sign saying "Welcome to Origin!", with red debug lines overlayed'
 description: This was one of the most ambitious -- and most delayed -- April Fools comics we've ever shipped.
 feature: true
 ---
-
-# Development notes from xkcd's "Gravity" and "Escape Speed"
-
-![A screenshot of the "Escape Speed" game, featuring a small spaceship moving past a sign saying "Welcome to Origin!", with red debug lines overlayed](../../../public/post/xkcd-gravity-escape-speed/escape-speed.png)
 
 On April 20th, xkcd published **[Escape Speed](https://xkcd.com/2765/)**, the 14th annual April Fools comic we've made together. Escape Seed is a large space exploration game created and drawn by Randall Munroe. I coded the engine and editor, with game logic and asset processing by davean. The game map was edited by [Patrick Clapp](https://www.instagram.com/fading_interest), [Amber](https://amberyu.st), [Kevin](https://amberyu.st), [Benjamin Staffin](https://twitter.com/bstaffin), and [Janelle Shane](https://www.aiweirdness.com).
 

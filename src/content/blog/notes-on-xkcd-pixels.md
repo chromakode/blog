@@ -3,8 +3,6 @@ title: Notes from the development of xkcd's "Pixels"
 pubDate: September 6, 2014
 ---
 
-# Notes from the development of xkcd's "Pixels"
-
 Over the years, I've had the pleasure of hacking on the frontend code for a bunch of [xkcd](http://xkcd.com)'s interactive comics, including: [unixkcd](http://uni.xkcd.com/), [xk3d](http://3d.xkcd.com/), [Umwelt](http://xkcd.com/1037/), [Time](http://xkcd.com/1190/), [Externalities](http://xkcd.com/1193/), and [Lorenz](http://xkcd.com/1350/). This weekend, I was pinged about making something to coincide with the release of _[What If?: Serious Scientific Answers to Absurd Hypothetical Questions](http://whatif.xkcd.com/book/)_. The process of building ["Pixels"](http://xkcd.com/1416/) was even crazier than our usual April Fools rush, and had the extra intrigue of being live during [Randall Munroe's Colbert Report interview](http://thecolbertreport.cc.com/guests/randall-munroe).
 
 Here's a few anecdotes from the development of _Pixels_ and a quick explanation of how it works. I hadn't worked with some of the graphics programming patterns (coordinate systems!) for a while, so I ended up making some classic mistakes -- hopefully you can avoid repeating them. :)

@@ -3,8 +3,6 @@ title: Downloading an image of a Linode drive
 pubDate: July 9, 2014
 ---
 
-# Downloading an image of a Linode drive
-
 Recently, before rebuilding [samurai](http://samurai.chromakode.com), I wanted to download the old drive image as a final resort in case I'd forgotten to snag any files. I was a bit disappointed that there was no way to simply download the raw image using the web interface, but there are dark arts of `dd` that can fill this gap. Linode provides [their own instructions][1] for the procedure, but I discovered a few tricks worth saving:
 
 [1]: https://library.linode.com/migration/ssh-copy

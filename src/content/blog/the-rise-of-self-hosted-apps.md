@@ -4,8 +4,6 @@ description: "Here's a sleeper prediction: a new crop of killer consumer apps ar
 pubDate: Feb 27, 2023
 ---
 
-# The rise of self-hosted apps
-
 Here's a sleeper prediction: a new crop of killer consumer apps are coming: [self-hosted](https://www.reddit.com/r/selfhosted) [PWAs](https://web.dev/progressive-web-apps), and they will replace cloud services for [many uses](https://github.com/Haxxnet/Compose-Examples).
 
 To name a few:

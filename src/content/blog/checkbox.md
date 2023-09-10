@@ -3,8 +3,6 @@ title: Checkbox
 pubDate: Apr 1, 2021
 ---
 
-# Checkbox
-
 Hi xkcd visitors! Today we released ["Checkbox"](https://xkcd.com/2445), our 2021 April Fool's project. I proposed the original concept for this one and built the frontend. The backend and editor tooling was made by davean and [Kevin Cotrone](https://twitter.com/cotrone), with content written by a collection of amazing folks credited in the header of [the comic](https://xkcd.com/2445/) and the one and only Randall Munroe.
 
 This year was a doozy. We specced and scrapped several different ideas in the months leading up to today. We finally settled on today's concept just 3 days ago. The need to do something simple was a really useful constraint, and we leaned into the idea of making something primitive but deep. I'm really proud of how it turned out!

@@ -1,11 +1,9 @@
 ---
 title: Backing up 18 years in 8 hours
+image: ../../../public/post/18-years-in-8-hours/workspace.jpg
+imageAlt: Backing up 18 years in 8 hours
 pubDate: January 4, 2016
 ---
-
-# Backing up 18 years in 8 hours
-
-![Computer guts](/post/18-years-in-8-hours/workspace.jpg)
 
 This winter, while home visiting family, I took the opportunity to gather up all of my old hard disks and archive them. This amounted to the majority of my digital footprint for the first 18 years of my life. I'd been putting the task off for a few years, but the chance to explore the data sitting on these old drives (and the cherished computers they came from!) helped motivate this project.
 

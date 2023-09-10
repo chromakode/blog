@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions'
+
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.less'
@@ -42,3 +44,8 @@ const {
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
 
 {import.meta.env.PROD && <Analytics />}
+
+{
+  /* The animate fallback feels laggy in Firefox without much animation, so opting out for now. */
+}
+<ViewTransitions fallback="swap" />

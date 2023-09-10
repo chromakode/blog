@@ -2,15 +2,11 @@
 title: Disaster recovery with ZFS and zrepl
 pubDate: Aug 27, 2023
 image: ../../../public/post/zfs-recovery-with-zrepl/no-boot-device.jpg
+imageAlt: 'A laptop with a blue BIOS screen reading: Default Boot Device Missing or Boot Failed. The photographer is making a silly surprised face in the screen reflection.'
 description: My SSD suddenly died. I only lost 10 minutes of data, thanks to ZFS and zrepl.
 ---
 
-# Disaster recovery with ZFS and zrepl
-
-![A laptop with a blue BIOS screen reading: Default Boot Device Missing or Boot Failed. The photographer is making a silly surprised face in the screen reflection.](/post/zfs-recovery-with-zrepl/no-boot-device.jpg)
-
 (Originally shared on [Mastodon](https://mastodon.social/@chromakode/110936177254839251))
-
 
 Last week, I pulled open my laptop to send a quick email. It had a frozen black screen, so I rebooted it, and... oh crap.
 

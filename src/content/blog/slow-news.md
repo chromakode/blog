@@ -3,8 +3,6 @@ title: Slow news
 pubDate: September 27, 2017
 ---
 
-# Slow news
-
 For the past 3 years, I've been addicted to the news. My usual days are punctuated by checking the NPR Newscast (via the wonderful [NPR One](http://one.npr.org)) every couple hours, reading articles linked through Twitter, Facebook, and Reddit, and listening to topic-focused news podcasts throughout the day as I exercise or do chores.
 
 I've been reflecting on what motivates me to devote so much time and attention to news. I want to know what is going on so that I can feel connected to and orient myself within the world. The past few years have brought a dismaying array of social, economic, and political challenges that seem to only accelerate. Often, catching up with the news compensates for a feeling of restlessness from the mounting problems my country and planet faces.

@@ -29,7 +29,7 @@ const { front, fullscreen } = Astro.props
 }
 <ColorBar sticky />
 <a id="side-logo" class:list={{ front, fullscreen }} href="/" title="Home">
-  <SideLogo client:load client:only="preact" />
+  <SideLogo client:load client:only="preact" transition:persist="side-logo" />
 </a>
 
 <script src="./scripts/viewport.ts"></script>

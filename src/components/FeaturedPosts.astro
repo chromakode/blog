@@ -5,12 +5,19 @@ import { getFeaturedPosts, postURL } from '@content/posts'
 const featuredPosts = await getFeaturedPosts()
 ---
 
-<ul>
+<ul aria-label="Featured posts">
   {
     featuredPosts.slice(0, 3).map((post) => (
       <li class="featured-post">
         <a href={postURL(post.slug)} title={post.data.title}>
-          <Image src={post.data.image!} height={400} format="webp" alt="" />
+          <Image
+            class="post-hero-img"
+            transition:name={post.slug}
+            src={post.data.image!}
+            height={400}
+            format="webp"
+            alt=""
+          />
           <div class="info">
             <div class="title">{post.data.title}</div>
             <div class="description">{post.data.description}</div>
@@ -45,6 +52,11 @@ const featuredPosts = await getFeaturedPosts()
     display: flex;
     text-decoration: none;
     color: black;
+  }
+
+  body:not(.scrolled) .post-hero-img {
+    /* Prevent slide transition to offscreen featured post tile. */
+    view-transition-name: none;
   }
 
   .info {

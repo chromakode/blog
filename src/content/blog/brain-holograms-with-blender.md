@@ -2,11 +2,10 @@
 title: Brain holograms with Blender and Looking Glass
 pubDate: Sep 5, 2022
 image: ../../../public/post/brain-holograms-with-blender/quilt.webp
+contentImage:
 description: How I made a real world hologram of my own brain scans.
 feature: true
 ---
-
-# Brain holograms with Blender and Looking Glass
 
 <video muted playsinline autoplay loop controls class="pingpong" src="/post/brain-holograms-with-blender/hologram.mp4" style="width: 100%; height: auto"></video>
 

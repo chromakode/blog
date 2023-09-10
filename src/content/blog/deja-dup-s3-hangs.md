@@ -3,8 +3,6 @@ title: Fixing hanging deja-dup S3 uploads
 pubDate: July 9, 2014
 ---
 
-# Fixing hanging deja-dup S3 uploads
-
 After configuring [deja-dup](https://launchpad.net/deja-dup) to back up to [S3](http://aws.amazon.com/s3/), I hit a snag: the process seemed to hang during the upload phase.
 
 To obtain more information, I found that you can enable verbose output via an environment variable (why it isn't a verbose command-line parameter is a mystery to me):

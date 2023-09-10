@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import { Image } from 'astro:assets'
 import { postURL } from '../content/posts'
 import PostDate from './PostDate.astro'
 
@@ -11,7 +12,7 @@ export interface Props {
 const { post, isListingPage } = Astro.props
 const {
   slug,
-  data: { pubDate },
+  data: { pubDate, title, image, imageAlt, contentTitle, contentImage },
 } = post
 const { Content } = await post.render()
 ---
@@ -19,11 +20,22 @@ const { Content } = await post.render()
 <article>
   <span class="breadcrumbs">
     {!isListingPage && <a href="/">chromakode</a>}
-    /
+     /
     <a href={postURL(slug)}>{slug}</a>
   </span>
   {pubDate && <PostDate date={pubDate} />}
   <div class="post">
+    {contentTitle !== null && <h1>{contentTitle ?? title}</h1>}
+    {
+      contentImage !== null && image && (
+        <Image
+          transition:name={isListingPage ? undefined : slug}
+          src={contentImage ?? image}
+          format="webp"
+          alt={imageAlt ?? ''}
+        />
+      )
+    }
     <Content />
   </div>
 </article>

@@ -3,12 +3,9 @@ title: Practicing urgency
 description: This year, a health scare reordered my priorities. Here's what it taught me about how to make the most of my time.
 pubDate: Nov 27, 2022
 image: ../../../public/post/practicing-urgency/sunset.jpg
+imageAlt: Sunset from Japantown, San Francisco, on October 3rd 2022
 feature: true
 ---
-
-# Practicing urgency
-
-![Sunset from Japantown, San Francisco, on October 3rd 2022](/post/practicing-urgency/sunset.jpg)
 
 _"What would you like to be remembered for after you're gone?"_
 

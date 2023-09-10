@@ -1,5 +1,6 @@
 ---
 title: aptitude why
+contentTitle:
 pubDate: July 23, 2014
 ---
 

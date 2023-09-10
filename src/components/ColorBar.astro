@@ -14,7 +14,6 @@ const { sticky, reversed } = Astro.props
     display: flex;
     width: 100%;
     height: var(--color-bar-height);
-    opacity: 0;
     transition: opacity 0.5s ease;
     z-index: 20;
 
@@ -35,20 +34,21 @@ const { sticky, reversed } = Astro.props
 </style>
 
 <script>
-  const base = Math.round(Math.random() * 360)
-  const mul = 10 + Math.round(Math.random() * 30)
+  function randomizeColors() {
+    const base = Math.round(Math.random() * 360)
+    const mul = 10 + Math.round(Math.random() * 30)
 
-  for (const el of document.getElementsByClassName('color-bars')) {
-    for (var i = 0; i < 6; i++) {
-      var bar = document.createElement('div')
-      bar.className = 'bar'
-      bar.style.backgroundColor =
-        'hsl(' + ((base + i * mul) % 360) + ', 70%, 60%)'
-      el.appendChild(bar)
-    }
-
-    if (el instanceof HTMLElement) {
-      el.style.opacity = '1'
+    for (const el of document.getElementsByClassName('color-bars')) {
+      for (var i = 0; i < 6; i++) {
+        var bar = document.createElement('div')
+        bar.className = 'bar'
+        bar.style.backgroundColor =
+          'hsl(' + ((base + i * mul) % 360) + ', 70%, 60%)'
+        el.appendChild(bar)
+      }
     }
   }
+
+  document.addEventListener('astro:after-swap', randomizeColors)
+  randomizeColors()
 </script>
