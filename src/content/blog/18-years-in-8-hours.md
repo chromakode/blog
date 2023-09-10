@@ -1,7 +1,7 @@
 ---
 title: Backing up 18 years in 8 hours
 image: ./images/18-years-in-8-hours/workspace.jpg
-imageAlt: Backing up 18 years in 8 hours
+imageAlt: Computer guts
 pubDate: January 4, 2016
 ---
 
