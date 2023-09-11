@@ -9,7 +9,7 @@ const featuredPosts = await getFeaturedPosts()
   {
     featuredPosts.slice(0, 3).map((post) => (
       <li class="featured-post">
-        <a href={postURL(post.slug)} title={post.data.title}>
+        <a href={postURL(post.slug)} title={post.data.title} rel="prefetch">
           <Image
             class="post-hero-img"
             transition:name={post.slug}
