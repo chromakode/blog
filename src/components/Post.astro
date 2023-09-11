@@ -12,7 +12,7 @@ export interface Props {
 const { post, isListingPage } = Astro.props
 const {
   slug,
-  data: { pubDate, title, image, imageAlt, contentTitle, contentImage },
+  data: { pubDate, title, imageAlt, contentTitle },
 } = post
 const postImg = await getPostImage(post)
 const { Content } = await post.render()
