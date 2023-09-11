@@ -58,7 +58,7 @@ for (const post of featuredPosts) {
     color: black;
   }
 
-  body:not(.scrolled) .post-hero-img {
+  html[data-astro-transition=forward] body:not(.scrolled) .post-hero-img {
     /* Prevent slide transition to offscreen featured post tile. */
     view-transition-name: none;
   }
