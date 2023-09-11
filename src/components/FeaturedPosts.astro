@@ -62,6 +62,12 @@ for (const post of featuredPosts) {
     color: black;
   }
 
+  .post-hero-img {
+    /* Work around featured post thumbs losing rounded corners during transitions */
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
   html[data-astro-transition=forward] body:not(.scrolled) .post-hero-img {
     /* Prevent slide transition to offscreen featured post tile. */
     view-transition-name: none;
