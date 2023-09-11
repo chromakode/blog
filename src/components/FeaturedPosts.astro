@@ -1,21 +1,25 @@
 ---
-import { Image } from 'astro:assets'
-import { getFeaturedPosts, postURL } from '@content/posts'
+import type { GetImageResult } from 'astro'
+import { getFeaturedPosts, getPostImage, postURL } from '@content/posts'
 
 const featuredPosts = await getFeaturedPosts()
+
+const imgSrcs: GetImageResult[] = []
+for (const post of featuredPosts) {
+  imgSrcs.push(await getPostImage(post))
+}
 ---
 
 <ul aria-label="Featured posts">
   {
-    featuredPosts.slice(0, 3).map((post) => (
+    featuredPosts.slice(0, 3).map((post, idx) => (
       <li class="featured-post">
         <a href={postURL(post.slug)} title={post.data.title} rel="prefetch">
-          <Image
+          <img
+            {...imgSrcs[idx].attributes}
+            src={imgSrcs[idx].src}
             class="post-hero-img"
             transition:name={post.slug}
-            src={post.data.image!}
-            height={800}
-            format="webp"
             alt=""
           />
           <div class="info">
