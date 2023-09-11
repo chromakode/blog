@@ -23,7 +23,9 @@ A few notes from implementing it here:
 
 It's amazing what a big difference a smooth crossfade can make. After using the web for almost 25 years, I've become accustomed to the flashy, stuttery transitions between pages. It's what makes UIs feel like the web. I can still imagine the IE 6 "click" sound when pages flashed to white on transition.
 
-I love how [page transitions can be declared with just a little CSS](https://developer.chrome.com/docs/web-platform/view-transitions/#custom-entry-and-exit-transitions). This is a really clever API, and there's tons of creative flexibility here.
+I love how [page transitions can be declared with just a little CSS](https://developer.chrome.com/docs/web-platform/view-transitions/#custom-entry-and-exit-transitions). This is a really clever API. Tons of creative possibilities here.
+
+View transitions will change the way I think about designing page layouts. For example, on my site, the color bars at the top have `position: sticky` so that they shrink out of the way when you scroll. This is also a cue that you're at the top of the page. With a crossfade transition, though, it's not always visually clear that you've warped to the start of a different scrollable space.
 
 ## Chrome is leading with great DX
 
