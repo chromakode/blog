@@ -31,6 +31,7 @@ const { Content } = await post.render()
         <Image
           transition:name={isListingPage ? undefined : slug}
           src={contentImage ?? image}
+          height={800}
           format="webp"
           alt={imageAlt ?? ''}
         />
