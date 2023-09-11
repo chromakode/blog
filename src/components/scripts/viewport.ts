@@ -1,4 +1,9 @@
 function sizePage() {
+  // Avoid changing hero height on scroll when browser chrome resizes
+  if (window.scrollY > 0) {
+    return
+  }
+
   // Use min height of viewport (excluding address bar, unlike vh which includes
   // it) -- someday maybe svh will be usable here.
   // https://stackoverflow.com/a/69367449
