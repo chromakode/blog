@@ -1,6 +1,6 @@
 ---
 title: Astro View Transitions
-description: Notes from kicking the tires of new View Transitions APIs
+description: Notes from kicking the tires of new View Transitions APIs.
 pubDate: Sep 10, 2023
 ---
 
