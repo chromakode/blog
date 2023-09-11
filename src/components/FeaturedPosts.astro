@@ -4,9 +4,13 @@ import { getFeaturedPosts, getPostImage, postURL } from '@content/posts'
 
 const featuredPosts = await getFeaturedPosts()
 
-const imgSrcs: GetImageResult[] = []
+const imgs: GetImageResult[] = []
 for (const post of featuredPosts) {
-  imgSrcs.push(await getPostImage(post))
+  const img = await getPostImage(post)
+  if (!img) {
+    throw new Error(`Featured post missing image: ${post.slug}`)
+  }
+  imgs.push(img)
 }
 ---
 
@@ -16,8 +20,8 @@ for (const post of featuredPosts) {
       <li class="featured-post">
         <a href={postURL(post.slug)} title={post.data.title} rel="prefetch">
           <img
-            {...imgSrcs[idx].attributes}
-            src={imgSrcs[idx].src}
+            {...imgs[idx].attributes}
+            src={imgs[idx].src}
             class="post-hero-img"
             transition:name={post.slug}
             alt=""
