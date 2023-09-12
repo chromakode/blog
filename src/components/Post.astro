@@ -12,9 +12,12 @@ export interface Props {
 const { post, isListingPage } = Astro.props
 const {
   slug,
-  data: { pubDate, title, imageAlt, contentTitle },
+  data: { pubDate, title, imageAlt, contentTitle, contentImage },
 } = post
-const postImg = await getPostImage(post)
+
+// A null value is used to unset the image (usually a video or other custom hero)
+const postImg = contentImage !== null && (await getPostImage(post))
+
 const { Content } = await post.render()
 ---
 
