@@ -95,7 +95,6 @@ const today = new Date()
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    min-width: 6rem;
     margin-bottom: 0.25rem;
 
     a {
@@ -116,6 +115,9 @@ const today = new Date()
   @media (max-width: 900px) {
     .inner {
       justify-content: flex-start;
+
+      // Make space for bottom right floating logo
+      padding-right: 4rem;
     }
   }
 </style>
