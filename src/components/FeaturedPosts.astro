@@ -2,7 +2,8 @@
 import type { GetImageResult } from 'astro'
 import { getFeaturedPosts, getPostImage, postURL } from '@content/posts'
 
-const featuredPosts = await getFeaturedPosts()
+const allFeaturedPosts = await getFeaturedPosts()
+const featuredPosts = allFeaturedPosts.slice(0, 3)
 
 const imgs: GetImageResult[] = []
 for (const post of featuredPosts) {
@@ -16,7 +17,7 @@ for (const post of featuredPosts) {
 
 <ul aria-label="Featured posts">
   {
-    featuredPosts.slice(0, 3).map((post, idx) => (
+    featuredPosts.map((post, idx) => (
       <li class="featured-post">
         <a href={postURL(post.slug)} title={post.data.title} rel="prefetch">
           <img
