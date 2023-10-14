@@ -27,3 +27,5 @@ My original conclusion to delay gratification wasn't wrong at the time, by the w
 There's still a deep-rooted fear that pausing to write will leak energy better spent creating.
 
 I know better, though. Sharing is a _source_ of energy, just like it has always been.
+
+([further discussion on Tildes](https://tildes.net/~creative/1bci/sharing_early_work_is_not_a_distraction))
