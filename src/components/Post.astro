@@ -134,13 +134,20 @@ const { Content } = await post.render()
       }
     }
 
+    :global(.audio-header) {
+      text-align: center;
+      border-top: 1px dashed gray;
+      border-bottom: 1px dashed gray;
+    }
+
     :global(time) {
       margin-left: 1em;
       font-size: 0.9em;
     }
 
     :global(h1),
-    :global(h2) {
+    :global(h2),
+    :global(h3) {
       font-family: 'Lato', sans-serif;
       line-height: 1.25em;
     }
@@ -153,6 +160,13 @@ const { Content } = await post.render()
       margin-top: 1.5em;
       margin-bottom: 0.5em;
       font-size: 1.25em;
+      color: #222;
+    }
+
+    :global(h3) {
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      font-size: 1.1em;
       color: #222;
     }
 
