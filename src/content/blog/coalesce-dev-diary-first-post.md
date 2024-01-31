@@ -30,7 +30,7 @@ One of the reasons why I decided to build a podcast editor is because I really l
 
 And it's also, frankly, something that is multitaskable: I really like that I can have a headset on, I can be doing something with my hands and be learning something or consuming information at the same time.
 
-I also really like improvisation and that leads to an interesting conflict because it takes time least for me, to get to the core of the ideas I want to talk about. As a listener, I just want to cut through all of that. I want to hear the author's thoughts in a clear and concise way. I want economy of my time as a listener.
+I also really like improvisation and that leads to an interesting conflict because it takes time at least for me, to get to the core of the ideas I want to talk about. As a listener, I just want to cut through all of that. I want to hear the author's thoughts in a clear and concise way. I want economy of my time as a listener.
 
 But as a creator, I like meandering. I like exploring. I like seeing what comes up when I'm speaking or thinking extemporaneously.
 
@@ -60,7 +60,7 @@ So I think it could be interesting to give more creative control across all the 
 
 ### Open-source
 
-When I was about 10 or 11, I had the idea to search the web for a tool that would let me create 3D art. And naturally, I stumbled upon Blender. Its creator, Ton Rosendaal, is a major inspiration of mine. What's cool about Blender is it was always offered as freeware. Even in the early 2000s, while it was being developed as a for-profit tool, you could download and have access to a ton of really interesting features. 
+When I was about 10 or 11, I had the idea to search the web for a tool that would let me create 3D art. And naturally, I stumbled upon Blender. Its creator, Ton Roosendaal, is a major inspiration of mine. What's cool about Blender is it was always offered as freeware. Even in the early 2000s, while it was being developed as a for-profit tool, you could download and have access to a ton of really interesting features.
 
 Maybe not as good as some of the professional tools at the time, but for a kid like me, it was mind-blowing. I have to have spent hundreds of hours making pictures in Blender, and it inspired me to pursue digital art.
 
