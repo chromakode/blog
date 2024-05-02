@@ -4,7 +4,6 @@ description: In February 2022, I began to hear my heartbeat and other phantom so
 pubDate: Sep 27, 2022
 image: ./images/pulsatile-tinnitus-sounds/whistle.png
 contentImage:
-feature: true
 ---
 
 In February 2022, I began to hear my heartbeat pulsing in my right ear.

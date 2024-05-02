@@ -92,6 +92,23 @@ const { Content } = await post.render()
       transform: scaleY(-1);
     }
 
+    :global(.center) {
+      text-align: center;
+
+      :global(img),
+      :global(video) {
+        width: auto;
+        max-width: 100%;
+      }
+    }
+
+    :global(.w-75) {
+      :global(img),
+      :global(video) {
+        width: 75%;
+      }
+    }
+
     :global(.bg-black img, .bg-black video) {
       background: black;
     }
@@ -201,6 +218,10 @@ const { Content } = await post.render()
       border: 1px dashed gray;
       border-left: none;
       border-right: none;
+    }
+
+    :global(details) {
+      margin: 1em 0;
     }
   }
 </style>
