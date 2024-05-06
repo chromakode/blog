@@ -1,10 +1,12 @@
 import { getImage } from 'astro:assets'
 import { getCollection, type CollectionEntry } from 'astro:content'
 
-export async function getPosts() {
-  return (await getCollection('blog')).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-  )
+export async function getPosts({
+  includeDrafts,
+}: { includeDrafts?: boolean } = {}) {
+  return (await getCollection('blog'))
+    .filter((p) => includeDrafts || !p.data.draft)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 }
 
 export async function getFeaturedPosts() {

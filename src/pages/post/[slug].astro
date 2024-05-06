@@ -10,9 +10,9 @@ import PostList from '@components/PostList.astro'
 import Nav from '@components/Nav.astro'
 
 export async function getStaticPaths() {
-  const posts = await getPosts()
+  const posts = await getPosts({ includeDrafts: true })
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.data.draft ? `DRAFT-${post.slug}` : post.slug },
     props: { post },
   }))
 }
@@ -23,13 +23,18 @@ export interface Props {
 
 const { post } = Astro.props
 const {
-  data: { title, description, image },
+  data: { title, description, image, draft },
 } = post
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} image={image?.src} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image?.src}
+      noindex={draft}
+    />
   </head>
 
   <body>

@@ -11,12 +11,14 @@ export interface Props {
   title: string
   description?: string
   image?: string
+  noindex?: boolean
 }
 
 const {
   title,
   description = SITE_DESCRIPTION,
   image = '/static/social.png',
+  noindex = false,
 } = Astro.props
 ---
 
@@ -28,6 +30,7 @@ const {
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex" />}
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
