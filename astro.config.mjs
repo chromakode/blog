@@ -7,7 +7,7 @@ import prefetch from '@astrojs/prefetch'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://chromakode.com',
-  integrations: [mdx(), sitemap(), preact(), prefetch()],
+  integrations: [mdx(), sitemap(), preact({ compat: true }), prefetch()],
   markdown: {
     shikiConfig: {
       theme: 'github-light',
