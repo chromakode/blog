@@ -212,7 +212,7 @@ Another cool aspect of the React context approach is that all of the physics hoo
 
 I wish I had used components instead of hooks to create rapier objects. I later discovered this is the approach [react-three-rapier](https://github.com/pmndrs/react-three-rapier/tree/main) takes, and it fits better with React diffing (vs. `useEffect` which destroys the old instance and recreates on dependency change).
 
-Machine is rendered entirely using the DOM. During early dev I was leery I'd reaching the end of my rope perf-wise. I expected I'd eventually ditch DOM rendering for [PixiJS](https://pixijs.com) or canvas when it got too slow. However, I wanted to see how far I could take it, since it meant less to build.
+Machine is rendered entirely using the DOM. During early dev I was leery I'd reach the end of my rope perf-wise. I expected I'd eventually ditch DOM rendering for [PixiJS](https://pixijs.com) or canvas when it got too slow. However, I wanted to see how far I could take it, since it meant less to build.
 
 To optimize rendering performance, the frame loop applies styles directly to widgets with physics simulation. Thus React's diff only runs when structural changes are made to the scene graph. Initially balls were rendered by React, but the frequent creates / removes were low hanging fruit for reducing diffs, so I created their own [optimized renderer](https://github.com/xkcd/incredible/blob/3f8660708203d7e60c146ef4998cfd377c6af2b8/client/src/components/widgets/Balls.tsx#L209). Another win was draw culling for balls and widgets out of view. This performed well with 4000 balls in simulation and hundreds onscreen, so I settled on the DOM-only rendering approach.
 
