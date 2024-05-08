@@ -132,7 +132,7 @@ Early on, we'd considered making the inputs and outputs of machines totally free
 If tile designs depended on previous ones, this could break a large portion of the machine. This led us to design tight enough constraints that multiple players would create compatible designs within the same tile space.
 
 <div class="outline-2 wide">
-  <LazyBunnyVideo client:idle width={1264} height={1196} url="https://vz-ab48ae95-d30.b-cdn.net/d619a23e-093b-47d4-aef8-e8dac0c65f55" muted playsinline autoplay loop controls />
+  <LazyBunnyVideo client:idle width={1268} height={808} url="https://vz-ab48ae95-d30.b-cdn.net/d619a23e-093b-47d4-aef8-e8dac0c65f55" muted playsinline autoplay loop controls />
 </div>
 
 This is the [Robustness principle](https://en.wikipedia.org/wiki/Robustness_principle) in action: "be conservative in what you send, be liberal in what you accept".
@@ -172,7 +172,7 @@ As a northstar, I wanted it to be possible to follow a single ball from the top 
 Once an early version of the map viewer was working, I started testing out an infinite map with only the viewable area simulated. It looked pretty good -- but you can see gaps in the flow when I scroll up, because the initial state of the tiles was empty as they enter the simulation.
 
 <div class="center w-75 outline-2">
-  <LazyBunnyVideo client:idle width={1264} height={1196} url="https://vz-ab48ae95-d30.b-cdn.net/8d018edd-bfba-4c00-ab49-ef34670bbfcd" muted playsinline autoplay loop controls />
+  <LazyBunnyVideo client:idle width={694} height={694} url="https://vz-ab48ae95-d30.b-cdn.net/8d018edd-bfba-4c00-ab49-ef34670bbfcd" muted playsinline autoplay loop controls />
 </div>
 
 Instead of an empty tile, we needed them to appear to already have activity in them. So here's the second bet: we'd snapshot tiles after they'd reached their steady state, only bringing the snapshots into existence just before they scrolled into view. Would players notice?
@@ -180,7 +180,7 @@ Instead of an empty tile, we needed them to appear to already have activity in t
 Here's a view of the final comic, with display clipping turned off (you can do this by disabling the `overflow: hidden` and `contain: paint` CSS properties on the containers):
 
 <div class="outline-2 wide">
-  <LazyBunnyVideo client:idle width={1264} height={1196} url="https://vz-ab48ae95-d30.b-cdn.net/60f488b9-0e39-4d4a-834f-1f7997c57002" muted playsinline autoplay loop controls />
+  <LazyBunnyVideo client:idle width={1788} height={1006} url="https://vz-ab48ae95-d30.b-cdn.net/60f488b9-0e39-4d4a-834f-1f7997c57002" muted playsinline autoplay loop controls />
 </div>
 
 Did you notice the snapshots? Unless I'm really looking for them, I don't.
@@ -190,7 +190,7 @@ Only the tiles you see rendered exist in the physics simulation. Note that there
 To create snapshots, we tied them into the moderation UI. Mods must wait at least 30 seconds before approving a tile. We then take the snapshot when they click the approve button. This gives mods discretion to wait a little longer for the machine to enter a nice looking state.
 
 <div class="outline-2">
-  <LazyBunnyVideo client:idle width={1264} height={1196} url="https://vz-ab48ae95-d30.b-cdn.net/49686202-b3a6-4149-8b12-9461f827d16e" muted playsinline autoplay loop controls />
+  <LazyBunnyVideo client:idle width={1050} height={1050} url="https://vz-ab48ae95-d30.b-cdn.net/49686202-b3a6-4149-8b12-9461f827d16e" muted playsinline autoplay loop controls />
 </div>
 
 Snapshotting worked way better than we expected. A really nice consequence is that it resets accumulated error in the machine. As you scroll around, your first impression of a tile is a clean good state that a moderator liked. In practice, if you watch long enough, many machines can get wedged into stuck or broken states, but you'll never see them if you keep exploring, because you'll enter fresh snapshots.
@@ -205,7 +205,7 @@ Machine is built on the [Rapier](https://rapier.rs) physics engine. Rapier was f
 On top of Rapier, I wrote a custom [React context](https://react.dev/learn/passing-data-deeply-with-context), [`<PhysicsContext>`](https://github.com/xkcd/incredible/blob/3f8660708203d7e60c146ef4998cfd377c6af2b8/client/src/components/PhysicsContext.tsx), which creates Rapier physics objects and manages them within the React component lifecycle. This made it easy to develop a "widget" component for each placeable object with physics or collision surfaces. Effectively, React functioned as a quick and dirty [scene graph](https://en.wikipedia.org/wiki/Scene_graph). This simplified loading and unloading tiles as the view scrolled: when a tile unmounts, all of the physics and DOM are cleaned up. As a bonus, it made it easy to wire up hot reloading with fast refresh, which was _really_ nice for tweaking collision shapes:
 
 <div class="outline-2 wide">
-  <LazyBunnyVideo client:idle width={1264} height={1196} url="https://vz-ab48ae95-d30.b-cdn.net/baa50578-dedc-482c-84c1-d14ffcd2f3cb" muted playsinline autoplay loop controls />
+  <LazyBunnyVideo client:idle width={1694} height={1130} url="https://vz-ab48ae95-d30.b-cdn.net/baa50578-dedc-482c-84c1-d14ffcd2f3cb" muted playsinline autoplay loop controls />
 </div>
 
 Another cool aspect of the React context approach is that all of the physics hooks noop when they're not inside a `<PhysicsContext>`. This is used to render static previews of tiles for the moderation UI.
@@ -232,7 +232,7 @@ One nice UX finding came from the moderation approve cooldown. Since tile snapsh
 Post-launch, I added a slider that allows moderators to speed up the simulation to much faster than realtime. This saves a _ton_ of moderator time, because now the first 30 seconds of a submission can be viewed in under 5 seconds. It's also quite useful for reviewing the behavior over a longer span of time.
 
 <div class="outline-2">
-  <LazyBunnyVideo client:idle width={1264} height={1196} url="https://vz-ab48ae95-d30.b-cdn.net/f4b881d5-bb41-4607-9a44-eea326332a42" muted playsinline autoplay loop controls />
+  <LazyBunnyVideo client:idle width={984} height={984} url="https://vz-ab48ae95-d30.b-cdn.net/f4b881d5-bb41-4607-9a44-eea326332a42" muted playsinline autoplay loop controls />
 </div>
 
 
@@ -247,7 +247,7 @@ _However_.
 The tile that ended up above the Interfoggle, "[Bouncy](https://xkcd.com/2916/#xt=2&yt=1&v=1355)", is a chaos engine launching balls across 3 crossing paths. Every once in a while, it will send a green ball through the wrong output, which wrecking-balls through the logjam and sends a cascade of blue balls through the Interfoggle.
 
 <div class="outline-2">
-  <LazyBunnyVideo client:idle width={1264} height={1196} url="https://vz-ab48ae95-d30.b-cdn.net/38361a2e-2b62-44f2-b1fb-98ccca87e938" muted playsinline autoplay loop controls />
+  <LazyBunnyVideo client:idle width={1382} height={1382} url="https://vz-ab48ae95-d30.b-cdn.net/38361a2e-2b62-44f2-b1fb-98ccca87e938" muted playsinline autoplay loop controls />
 </div>
 
 The Interfoggle can't have been designed with this behavior in mind, because we only feed the correct color in the editor (this was a conscious decision to make inputs easier to understand). Yet, this machine is so much better with the green balls in the mix.
