@@ -5,7 +5,6 @@ image: ./images/xkcd-machine/machine-zoomed-out.png
 imageAlt: 'A zoomed out screenshot of the "Machine" game, showing a grid of over 50 player submitted designs, including one that spells the word "xkcd" in large letters'
 contentImage:
 description: How we designed xkcd's massive rube goldberg machine game in 3 weeks.
-draft: true
 ---
 
 import LazyBunnyVideo from '@components/LazyBunnyVideo'
@@ -117,7 +116,7 @@ Once we had a prototype editor running, Davean quickly dispelled this idea by cr
   <LazyBunnyVideo client:idle width={1264} height={1196} url="https://vz-ab48ae95-d30.b-cdn.net/293f6bc1-8d78-47b9-8853-191a2a28f075" muted playsinline autoplay loop controls />
 </div>
 
-Unless balls moved in straight uninterrupted paths, it was clearly easy for players to make very unpredictable machines. Randall wryly suggested we add [double pendulums](https://en.wikipedia.org/wiki/Double_pendulum).
+Unless balls moved in straight uninterrupted paths, clearly it was easy for players to make very unpredictable machines. Randall wryly suggested we add [double pendulums](https://en.wikipedia.org/wiki/Double_pendulum).
 
 From a design standpoint, this settled that making the machines more predictable would trade against degrees of freedom players had. Also, in the face of a tight deadline, it's best to keep it simple, which favored an approach light on prediction or simulation.
 
@@ -138,7 +137,7 @@ If tile designs depended on previous ones, this could break a large portion of t
 
 This is the [Robustness principle](https://en.wikipedia.org/wiki/Robustness_principle) in action: "be conservative in what you send, be liberal in what you accept".
 
-To provide players with input and output constraints, we'd need a map of the whole machine from the start. Generating the map also gave us the opportunity to vary how challenging the machines would be (we called the tile configurations "puzzles"). Kevin's map generator [TODO link] transitions from simple single-input single-output puzzles to complex 4-in-4-out merges in the middle, back to 2 outputs per tile at the end.
+To provide players with input and output constraints, we'd need a map of the whole machine from the start. Generating the map also gave us the opportunity to vary how challenging the machines would be (we called the tile configurations "puzzles"). Kevin's [map generator](https://github.com/xkcd/incredible/blob/3f8660708203d7e60c146ef4998cfd377c6af2b8/src/Incredible/Puzzle.hs#L89) transitions from simple single-input single-output puzzles to complex 4-in-4-out merges in the middle, back to 2 outputs per tile at the end.
 
 On the player side, we designed the constraints so we could give players realtime feedback as they constructed their tile. By requiring that tiles output balls on average at roughly the same rate as they received them, we could discourage machines that ate balls or created a lot of latency (e.g. pooling them up). We [chaos tested](https://en.wikipedia.org/wiki/Chaos_engineering) tiles by randomizing the rate of balls entering the editor to reflect the variance upstream.
 
@@ -203,7 +202,7 @@ The machine you're scrolling around in the comic isn't real. It's [hyperreal](ht
 
 Machine is built on the [Rapier](https://rapier.rs) physics engine. Rapier was fantastic to work with: it has great docs, a clean API with lots of useful primitives, and has impressive performance thanks to its Rust implementation (running as WASM in the browser). I was also initially drawn to Rapier's [determinism guarantees](https://rapier.rs/docs/user_guides/javascript/determinism), though we didn't end up doing any server side simulation.
 
-On top of Rapier, I wrote a custom [React context](https://react.dev/learn/passing-data-deeply-with-context), `<PhysicsContext>`, [TODO: link] to create Rapier physics objects and manage them within the React component lifecycle. This made it easy to develop a "widget" component for each placeable object with physics or collision surfaces. Effectively, React functioned as a quick and dirty [scene graph](https://en.wikipedia.org/wiki/Scene_graph). This simplified loading and unloading tiles as the view scrolled: when a tile unmounts, all of the physics and DOM are cleaned up. As a bonus, it made it easy to wire up hot reloading with fast refresh, which was _really_ nice for tweaking collision shapes:
+On top of Rapier, I wrote a custom [React context](https://react.dev/learn/passing-data-deeply-with-context), [`<PhysicsContext>`](https://github.com/xkcd/incredible/blob/3f8660708203d7e60c146ef4998cfd377c6af2b8/client/src/components/PhysicsContext.tsx), which creates Rapier physics objects and manages them within the React component lifecycle. This made it easy to develop a "widget" component for each placeable object with physics or collision surfaces. Effectively, React functioned as a quick and dirty [scene graph](https://en.wikipedia.org/wiki/Scene_graph). This simplified loading and unloading tiles as the view scrolled: when a tile unmounts, all of the physics and DOM are cleaned up. As a bonus, it made it easy to wire up hot reloading with fast refresh, which was _really_ nice for tweaking collision shapes:
 
 <div class="outline-2 wide">
   <LazyBunnyVideo client:idle width={1264} height={1196} url="https://vz-ab48ae95-d30.b-cdn.net/baa50578-dedc-482c-84c1-d14ffcd2f3cb" muted playsinline autoplay loop controls />
@@ -224,7 +223,7 @@ I've heard comparisons drawn between modern browsers and game engines, with thei
 
 Machine's backend was written in Haskell by davean and Kevin, with redis as backing store. We used OpenAPI with [OpenAPI fetch](https://openapi-ts.pages.dev/openapi-fetch) to share types between the codebases. This approach had some teething pains adapting Haskell types, but ended up very helpful for coordinating late breaking API changes. This was also my first project using [TanStack Query](https://tanstack.com/query/latest), which was quite handy for caching and automatically refreshing the machine without server push.
 
-The moderation UI, designed by [Ed White](https://github.com/spyhi), was critical for us because it bottlenecks all submissions being published. Mods must choose from potentially hundreds of designs for a particular tile. We used a simple approach but unreasonably effective approach to prioritize the queue. Each type of widget has an interestingness score [TODO link], and we count each instance to sort candidate tiles. This biases towards maximalist solutions, though mods counteract that by reviewing the middle of the list for more minimal ones.
+The moderation UI, designed by [Ed White](https://github.com/spyhi), was critical for us because it bottlenecks all submissions being published. Mods must choose from potentially hundreds of designs for a particular tile. We used a simple approach but unreasonably effective approach to prioritize the queue. Each type of widget has an [interestingness score](https://github.com/xkcd/incredible/blob/3f8660708203d7e60c146ef4998cfd377c6af2b8/client/src/components/moderation/interestingWeights.ts), and we count each instance to sort candidate tiles. This biases towards maximalist solutions, though mods counteract that by reviewing the middle of the list for more minimal ones.
 
 The large imbalance between the number of submitted designs and those published in the machine is unfortunate -- it's my least favorite thing about this comic. We searched for a way to make more of the back catalog available prior to launching, but there wasn't a good compromise given our moderation time constraints. We'd like to find ways to share more of the submission dataset after live submissions are finished.
 
@@ -253,13 +252,13 @@ The tile that ended up above the Interfoggle, "[Bouncy](https://xkcd.com/2916/#x
 
 The Interfoggle can't have been designed with this behavior in mind, because we only feed the correct color in the editor (this was a conscious decision to make inputs easier to understand). Yet, this machine is so much better with the green balls in the mix.
 
-One of the great joys of making a project like this is discovering all the creative ways people use it, intentional or not. Even though I know it's coming, I'm always shocked by how brilliant the internet is when given a shared canvas. Thanks to everyone who contributed tiles.
+One of the great joys of making a project like this is discovering all the creative ways people use it, intentional or not. Even though I know it's coming, I'm continually amazed by how brilliant the internet is when given a shared canvas. Thanks to everyone who contributed tiles.
 
 At the time of writing, there's still a little time to [add your own design](https://xkcd.com/2916) to the final machine.
 
 ---
 
 
-You can check out the [source code of Machine here](http://TODO). Feel free to [drop me a line on Mastodon](https://mastodon.social/@chromakode) if you have any questions about it. One cool thing to hack on would be implementing a full global simulation of the machine. I'm quite curious to see how well it works.
+You can check out the [source code of Machine here](https://github.com/xkcd/incredible). Feel free to [drop me a line on Mastodon](https://mastodon.social/@chromakode) if you have any questions about it. One cool thing to hack on would be implementing a full global simulation of the machine. I'm quite curious to see how well it works.
 
 I hope you've enjoyed this deep dive into "Machine". For more xkcd stories, check out these notes from our [space exploration games](/post/xkcd-gravity-escape-speed) and 2021's [Morse Code April Fool's comic](/post/checkbox).
