@@ -3,7 +3,7 @@ import rss from '@astrojs/rss'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 import { getPosts, postURL } from 'src/content/posts'
 
-export async function get(context: AstroGlobalPartial) {
+export async function GET(context: AstroGlobalPartial) {
   const posts = await getPosts()
   return rss({
     title: SITE_TITLE,
