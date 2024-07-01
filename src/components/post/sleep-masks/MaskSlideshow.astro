@@ -1,0 +1,41 @@
+---
+import { getImage } from 'astro:assets'
+import ImageSlideshow from './ImageSlideshow'
+
+interface Props {
+  alt: string
+  width: number
+}
+
+const { alt, width } = Astro.props
+
+const names = [
+  'lky',
+  'bucky',
+  'mantapro',
+  'tempurpedic',
+  'alaskabear-2strap',
+  'bedtimebliss',
+  'alaskabear-contoured',
+  'alaskabear-contoured-2strap',
+]
+
+const imgURLs = []
+let lastAttributes: Record<string, any> = {}
+for (const name of names) {
+  const { default: img } = await import(
+    `../../../content/blog/images/sleep-masks/${name}.webp`
+  )
+  const { src, attributes } = await getImage({ src: img, width })
+  lastAttributes = attributes
+  imgURLs.push(src)
+}
+---
+
+<ImageSlideshow
+  client:idle
+  alt={alt}
+  imgURLs={imgURLs}
+  width={lastAttributes.width}
+  height={lastAttributes.height}
+/>

@@ -1,0 +1,10 @@
+.container {
+  position: relative;
+  display: flex;
+}
+
+.overlay {
+  position: absolute;
+  transition: opacity 200ms ease-out;
+  pointer-events: none;
+}

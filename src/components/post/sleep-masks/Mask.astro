@@ -1,0 +1,76 @@
+---
+import { getImage } from 'astro:assets'
+import OverlayImage from './FadeOverlayImage'
+
+interface Props {
+  name: string
+  alt: string
+}
+
+const { name, alt } = Astro.props
+
+const width = 1376
+
+const { default: img } = await import(
+  `../../../content/blog/images/sleep-masks/${name}.webp`
+)
+const { default: imgEyes } = await import(
+  `../../../content/blog/images/sleep-masks/${name}-eyes.webp`
+)
+const { src, attributes } = await getImage({ src: img, width })
+const { src: srcEyes } = await getImage({ src: imgEyes, width })
+---
+
+<div class="mask">
+  <OverlayImage
+    client:idle
+    alt={alt}
+    baseImgURL={src}
+    overlayImgURL={srcEyes}
+    {...attributes}
+  />
+  <table class="mask-data">
+    <slot />
+  </table>
+</div>
+
+<style>
+  .mask {
+    position: relative;
+    display: flex;
+  }
+
+  .mask-data {
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+    padding: 4px;
+
+    td {
+      padding: 2px 6px;
+    }
+
+    td:first-child {
+      opacity: 0.65;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .mask-data {
+      font-size: 0.75em;
+      padding: 2px;
+
+      tr {
+        line-height: 1.15em;
+      }
+
+      td {
+        padding: 2px 4px;
+      }
+    }
+  }
+</style>
