@@ -47,14 +47,14 @@ export default function MaskEyePreview({
     const handleScroll = throttle(() => {
       const rect = el.getBoundingClientRect()
       const rectCenterY = rect.top + rect.height / 2
-      const winHalfHeight = window.innerHeight / 2
-      const centerDistance = clamp(
-        Math.abs(winHalfHeight - rectCenterY) / winHalfHeight,
+      const fadeStartPercent = 0.35
+      const topDistance = clamp(
+        rectCenterY / window.innerHeight - fadeStartPercent,
         0,
         maxOpacity,
       )
       requestAnimationFrame(() => {
-        el.style.opacity = String(centerDistance)
+        el.style.opacity = String(topDistance)
       })
     }, 30 / 1000)
 
