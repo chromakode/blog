@@ -10,5 +10,5 @@
   
 [[redirects]]
   from = "/shape/*"
-  to = "https://chromakode-reshape.netlify.app/:splat"
+  to = "https://chromakode-reshape.netlify.app/shape/:splat"
   status = 200
