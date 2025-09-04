@@ -12,3 +12,8 @@
   from = "/shape/*"
   to = "https://chromakode-reshape.netlify.app/shape/:splat"
   status = 200
+
+[[redirects]]
+  from = "/m/*"
+  to = "https://storage.googleapis.com/chromakode-static/:splat"
+  status = 200
